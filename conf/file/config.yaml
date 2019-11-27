@@ -1,0 +1,23 @@
+db:
+  name: blog
+  addr: 127.0.0.1:3306
+  username: root
+  password: 123456
+  gorm:
+    logMode: 0
+    maxOpenConn: 20000
+    maxIdleConn: 0
+    singularTable: 1
+log:
+  level: debug
+  maxsize: 1024
+  maxage: 30
+  maxbackups: 10
+  localtime: 1
+  compress: 1
+  path: /Users/lanyulei/projects/lanyulei/go_projects/blog/log/blog.log
+api:
+  version: /api/v1
+jwt:
+  secret: 48c3564674c011e98849acde48001122
+initPassword: 123456
