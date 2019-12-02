@@ -10,19 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Q-Blog 文章归档</title>
+    <title>Mr. Lan 文章归档</title>
     <!-- InstanceEndEditable -->
-    <meta name="Author" contect="QBL">
-	<meta name="Copyright" content="Q-Blog">
-	<meta name="keywords" content="个人博客,Q-Blog" />
-	<meta name="description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
-	<meta property="og:title" content="Q-Blog" />
-	<meta property="og:title" content="Q-Blog 网站首页" />
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.qbl.link" />
+	<meta property="og:url" content="http://www.fdevops.com" />
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.qbl.link" />
-	<meta property="og:description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
@@ -78,19 +78,19 @@
     <header>
         <nav>
             <div class="logo">
-              <a target='_blank' href="Index.html">
+              <a target='_blank' href="/blog/index">
                     <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
                 </a>
             </div>
             <!-- 汉堡菜单 -->
           <input type="checkbox" id="togglebox" />
             <ul>
-                <li><a href="Index.html">网站首页</a></li>
-                <li><a href="Article.html">学无止境</a></li>
-                <li><a href="Archive.html">文章归档</a></li>
-                <li><a href="Moments.html">瞬时说说</a></li>
-                <li><a href="Resources.html">资源分享</a></li>
-                <li><a href="About.html">关于本站</a></li>
+                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+                <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/archive" style="font-size: 18px; color: #fff;">文章归档</a></li>
+                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
+                <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
           <label class="menu" for="togglebox">
                 <i class="layui-icon layui-extend-hamburg-menu"></i>
@@ -98,16 +98,6 @@
         </nav>
         <div class="clearfix"></div>
     </header>
-<section class="bg-overlay layui-hide">
-        <div class="overlay"></div>
-        <div class="layui-row text py-5">
-            <p class="lead">Keep on going never give up.</p>
-            <h1>
-                我为你翻山越岭，却无心看风景
-            </h1>
-            <a href="#welcome" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-lg">Let's Go</a>
-        </div>
-    </section>
     <section class="container">
 		<!-- InstanceBeginEditable name="EditRegion1" -->
 		
@@ -117,191 +107,49 @@
     		<div class="card">
 				<h2 class="side-title">
 					站点统计：
-					<span>6个分类</span>
-					<span>88篇文章</span>
-					<span>共 52条评论</span>
-					<span>浏览量：4069</span>
-					<span>最后更新：2019年8月25日</span>
+					<span>{{ .content.TypeCount }} 个分类</span>
+					<span>{{ .content.ArticleCount }} 篇文章</span>
+					<span>52 条评论</span>
+					<span>{{ .content.AwesomeCount }} 个赞</span>
+					<span>浏览量：{{ .content.ViewCount }}</span>
+					<span>最后更新：{{ .content.LastUpdateTime.Format "2006-01-02 15:04:05" }}</span>
 				</h2>
 				<ul class="layui-timeline">
+					{{ range .content.ArticleGroup }}
 					<li class="layui-timeline-item">
 						<i class="layui-icon layui-timeline-axis"></i>
 						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-25</h3>
+							<h3 class="layui-timeline-title">{{ .ArchiveDataString }}</h3>
 							<ul>
+								{{ range .ArticleData }}
 								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（57）对象、集合初始化器</a>
+									<a href="/blog/details?content_id={{ .Id }}">{{ .Title }}</a>
 								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（56）可空类型</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（55）全面解析泛型</a>
-								</li>
+								{{ end }}
 							</ul>
 						</div>
 					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-20</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（54）参数传递问题剖析</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（52）深入理解值类型和引用类型</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（51）事件</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（50）委托</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-18</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">C# 操作XML文档</a>
-								</li>
-								
-								<li>
-									<a href="ArticleDetails.html">C#【练习】斐波那契数列求和</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-15</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（49）冒泡排序算法</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（48）MD5加密</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-10</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（47）Dictionary字典集合</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-08</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（41）面向对象三大特性之多态</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（40）面向对象三大特性之继承</a>
-								</li>
-								<li>
-									<a href="ArticleDetails.html">C# 学习笔记（39）面向对象三大特性之封装</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-05</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">SQL Server之使用SQL语句管理数据库（重命名、分离、附加、删除）</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-						<div class="layui-timeline-content layui-text">
-							<h3 class="layui-timeline-title">2019-08-02</h3>
-							<ul>
-								<li>
-									<a href="ArticleDetails.html">SQL Server之使用Alter Database修改数据库</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="layui-timeline-item">
-						<i class="layui-icon layui-timeline-axis"></i>
-					</li>
+					{{ end }}
 				</ul>
 				<nav class="nav-box wow bounceIn" data-wow-delay="0.3s">
 					<input type="checkbox" id="menu-cb" class="nav-cb" />
 					<div class="nav-content">
 						<ul class="nav-items">
+							{{ range $index, $value := .date }}
 							<li class="nav-item">
-								<span class="nav-item-text">2019</span>
+								<span class="nav-item-text">{{ $value.Year }}</span>
 								<div class="bubble layui-anim layui-anim-upbit">
 									<div class="sanjiao"></div>
 									<ul>
-										<li><a href="#">08月</a></li>
-										<li><a href="#">06月</a></li>
-										<li><a href="#">05月</a></li>
-										<li><a href="#">04月</a></li>
+										{{ range .Months }}
+											<li>
+												<a href="/blog/archive?date={{ $value.Year }}-{{ .Month }}">{{ .Month }}月</a>
+											</li>
+										{{ end }}
 									</ul>
 								</div>
 							</li>
-							<li class="nav-item">
-								<span class="nav-item-text">2018</span>
-								<div class="bubble layui-anim layui-anim-upbit">
-									<div class="sanjiao"></div>
-									<ul>
-										<li><a href="#">12月</a></li>
-										<li><a href="#">11月</a></li>
-										<li><a href="#">06月</a></li>
-										<li><a href="#">05月</a></li>
-										<li><a href="#">02月</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="nav-item">
-								<span class="nav-item-text">2017</span>
-								<div class="bubble layui-anim layui-anim-upbit">
-									<div class="sanjiao"></div>
-									<ul>
-										<li><a href="#">10月</a></li>
-										<li><a href="#">09月</a></li>
-										<li><a href="#">08月</a></li>
-										<li><a href="#">06月</a></li>
-										<li><a href="#">05月</a></li>
-										<li><a href="#">04月</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="nav-item">
-								<span class="nav-item-text">2016</span>
-								<div class="bubble layui-anim layui-anim-upbit">
-									<div class="sanjiao"></div>
-									<ul>
-										<li><a href="#">12月</a></li>
-										<li><a href="#">08月</a></li>
-										<li><a href="#">06月</a></li>
-										<li><a href="#">05月</a></li>
-										<li><a href="#">04月</a></li>
-										<li><a href="#">03月</a></li>
-										<li><a href="#">01月</a></li>
-									</ul>
-								</div>
-							</li>
+							{{ end }}
 						</ul>
 					</div>
 					<label class="nav-btn" for="menu-cb"></label>
@@ -316,7 +164,7 @@
 		<!-- InstanceEndEditable -->    
     </section>
    <footer>
-     <p><a href="http://www.qbl.link">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
+     <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">

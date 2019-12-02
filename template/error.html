@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Window-target" content="_top">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Mr. Lan 系列教程</title>
+    <!-- InstanceEndEditable -->
+    <meta name="Author" contect="Mr. Lan">
+    <meta name="Copyright" content="Mr. Lan">
+    <meta name="keywords" content="个人博客,Mr. Lan" />
+    <meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+    <meta property="og:title" content="Mr. Lan" />
+    <meta property="og:title" content="Mr. Lan 网站首页" />
+    <meta property="og:type" content="个人博客" />
+    <meta property="og:url" content="http://www.fdevops.com" />
+    <meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
+    <meta property="og:site_name" content="www.fdevops.com" />
+    <meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="../static/css/loading.css" rel="stylesheet" />
+    <link href="../static/css/scroll-bar.css" rel="stylesheet" />
+    <link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
+    <link href="../static/css/common.css" rel="stylesheet" />
+    <link href="../static/css/suspension.css" rel="stylesheet" />
+    <link href="../static/css/animate.css" rel="stylesheet" />
+    <link href="../static/Eextend/iconfont/iconfont.css" rel="stylesheet" />
+
+    <link href="/static/error/qbase.css" rel="stylesheet" />
+    <link href="/static/error/qbase_datauri.css" rel="stylesheet" />
+
+    <script src="../static/Eextend/iconfont/iconfont.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/Eextend/layui/layui.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--
+           ▄              ▄
+          ▌▒█           ▄▀▒▌
+          ▌▒▒▀▄        ▀▒▒▒▐
+         ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+       ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+     ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+   ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+   ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+  ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒  typecho  ▒▌
+  ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+   ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+    ▀ yo-du ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+      ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+     ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+
+    --你好，世界！生活，从敲的第一行代码开始。
+-->
+<div id="loading">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object" id="object_four"></div>
+            <div class="object" id="object_three"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_one"></div>
+        </div>
+    </div>
+</div>
+<header>
+    <nav>
+        <div class="logo">
+            <a target='_blank' href="/blog/index">
+                <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
+            </a>
+        </div>
+        <!-- 汉堡菜单 -->
+        <input type="checkbox" id="togglebox" />
+        <label class="menu" for="togglebox">
+            <i class="layui-icon layui-extend-hamburg-menu"></i>
+        </label>
+    </nav>
+    <div class="clearfix"></div>
+</header>
+<section class="container">
+    <div class="layui-container" style="text-align: center">
+        <div class="error-content-div">
+            <SECTION class=mod-page-body>
+                <DIV class="mod-page-main wordwrap clearfix">
+                    <DIV class=x-page-container>
+                        <DIV class="mod-notfound grid-98" style="position:relative;">
+                            <div style="position: absolute; top: 40%; transform: translateY(-40%); left: 25%;" class="error-content-dev-p">
+                                <P style="FONT-SIZE: 24px; LINE-HEIGHT: 70px;">{{ .ErrorContent }}</P>
+                                <P style="FONT-SIZE: 15px; LINE-HEIGHT: 20px">您可以回到
+                                    <A href="{{ .JumpUrl }}">上一步页面</A>或到
+                                    <A href="/blog/index">网站首页</A>
+                                </P>
+                                <br><br>
+                                <p style="font-size: 15px">
+                                    <span>
+                                        页面将会在 <b id="wait">5</b> 秒后，<a id="href" href="{{ .JumpUrl }}">跳转</a>到上一步页面
+                                    </span>
+                                </p>
+                            </div>
+                        </DIV>
+                    </DIV>
+                </DIV>
+            </SECTION>
+        </div>
+    </div>
+    <!-- InstanceEndEditable -->
+</section>
+<footer>
+    <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
+</footer>
+<!-- 打字机特效js-->
+<script src="../static/js/Template.js"></script>
+<!-- 这个JS展示公告层用的，无关紧要可以删掉 -->
+</body>
+<script type=text/javascript>
+    (function() {
+        var a = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(","),
+            b = a.length;
+        while (b--) document.createElement(a[b]);
+
+        var wait = document.getElementById('wait'), href = document.getElementById('href').href;
+        var interval = setInterval(function() {
+            var time = --wait.innerHTML;
+            if (time === 0) {
+                clearInterval(interval);
+                window.location.href = "{{ .JumpUrl }}"
+            }
+        }, 1000);
+
+    })();
+</script>
+
+<style type=text/css>
+    .mod-notfound {
+        BORDER-RIGHT: #e1e1e1 1px solid;
+        BORDER-TOP: #e1e1e1 1px solid;
+        MARGIN-TOP: 10px; BACKGROUND: #fff;
+        BORDER-LEFT: #e1e1e1 1px solid;
+        BORDER-BOTTOM: #e1e1e1 1px solid;
+        HEIGHT: 585px;
+        TEXT-ALIGN: center;
+        border-radius: 10px
+    }
+</style>
+<!-- InstanceEnd -->
+</html>

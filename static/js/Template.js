@@ -3,10 +3,10 @@
 layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedit'], function () {
     try {
         var util = layui.util, layer = layui.layer;
-	console.log("Author：Mr. Lan");
+        console.log("Author：Mr. Lan");
         $(document).ready(function () { //DOM树加载完毕执行，不必等到页面中图片或其他外部文件都加载完毕
             //页面加载完成后，速度太快会导到loading层闪烁，影响体验，所以在此加上500毫秒延迟
-            setTimeout(function () { $("#loading").hide(); }, 500);
+            $("#loading").hide();
         });
 
         //初始化WOW.js
@@ -32,11 +32,11 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
                         anim: 4,
                         tab: [{
                             title: '微信',
-                            content: '<img src="images/zsm.jpg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
+                            content: '<img src="/static/images/Wechat.jpeg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
                         },
                         {
                             title: '支付宝',
-                            content: '<img src="images/zfb.jpg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
+                            content: '<img src="/static/images/Alipay.jpeg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
                         }],
                         success: function (layero, index) {
                             $("#" + layero[0].id + " .layui-layer-content").css("overflow", "hidden");
@@ -120,11 +120,10 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
 });
 
 //百度统计
-var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?132af61e5d1e0bde3638f1ee143bfdb0";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
-
+// var _hmt = _hmt || [];
+// (function () {
+//     var hm = document.createElement("script");
+//     hm.src = "https://hm.baidu.com/hm.js?132af61e5d1e0bde3638f1ee143bfdb0";
+//     var s = document.getElementsByTagName("script")[0];
+//     s.parentNode.insertBefore(hm, s);
+// })();

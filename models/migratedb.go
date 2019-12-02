@@ -16,5 +16,8 @@ func AutoMigrateTable() {
 		&blog.Tag{},
 		&blog.Type{},
 		&blog.ContentTag{},
+		&blog.Links{},
+		&blog.Series{},
+		&blog.SeriesDetails{},
 	)
 }

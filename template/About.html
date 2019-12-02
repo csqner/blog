@@ -10,19 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Q-Blog 关于本站</title>
+    <title>Mr. Lan 关于本站</title>
     <!-- InstanceEndEditable -->
-    <meta name="Author" contect="QBL">
-	<meta name="Copyright" content="Q-Blog">
-	<meta name="keywords" content="个人博客,Q-Blog" />
-	<meta name="description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
-	<meta property="og:title" content="Q-Blog" />
-	<meta property="og:title" content="Q-Blog 网站首页" />
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.qbl.link" />
+	<meta property="og:url" content="http://www.fdevops.com" />
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.qbl.link" />
-	<meta property="og:description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
@@ -78,19 +78,19 @@
     <header>
         <nav>
             <div class="logo">
-              <a target='_blank' href="Index.html">
+              <a target='_blank' href="/blog/index">
                     <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
                 </a>
             </div>
             <!-- 汉堡菜单 -->
           <input type="checkbox" id="togglebox" />
             <ul>
-                <li><a href="Index.html">网站首页</a></li>
-                <li><a href="Article.html">学无止境</a></li>
-                <li><a href="Archive.html">文章归档</a></li>
-                <li><a href="Moments.html">瞬时说说</a></li>
-                <li><a href="Resources.html">资源分享</a></li>
-                <li><a href="About.html">关于本站</a></li>
+                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+                <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
+                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
+                <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/about" style="font-size: 18px; color: #ffffff">关于本站</a></li>
             </ul>
           <label class="menu" for="togglebox">
                 <i class="layui-icon layui-extend-hamburg-menu"></i>
@@ -98,16 +98,6 @@
         </nav>
         <div class="clearfix"></div>
     </header>
-<section class="bg-overlay layui-hide">
-        <div class="overlay"></div>
-        <div class="layui-row text py-5">
-            <p class="lead">Keep on going never give up.</p>
-            <h1>
-                我为你翻山越岭，却无心看风景
-            </h1>
-            <a href="#welcome" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-lg">Let's Go</a>
-        </div>
-    </section>
     <section class="container">
 		<!-- InstanceBeginEditable name="EditRegion1" -->
 		
@@ -116,22 +106,16 @@
 		
 		<div class='side-bar'>
 			<div class='box'>
-				<a href="About.html"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
+				<a href="/blog/about"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
 			</div>
 			<div class='box'>
-				<a href="Author.html"><div class='side bg-02'><span class='side-content'>关于作者</span></div></a>
+				<a href="/blog/author"><div class='side bg-02'><span class='side-content'>关于博主</span></div></a>
 			</div>
 			<div class='box'>
-				<a href="FriendlyLink.html"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
+				<a href="/blog/links"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
 			</div>
 			<div class='box'>
 				<a href="MessageBoard.html"><div class='side bg-04'><span class='side-content'>网站留言</span></div></a>
-			</div>
-			<div class='box'>
-				<a href="#"><div class='side bg-05'><span class='side-content'>在线音乐</span></div></a>
-			</div>
-			<div class='box'>
-				<a href="SiteMap.html"><div class='side bg-06'><span class='side-content'>站点地图</span></div></a>
 			</div>
 		</div>
 		
@@ -139,14 +123,20 @@
 			<div class="layui-container">
 				<div class="layui-row synopsis">
 					<div class="layui-col-lg8 layui-col-lg-offset2 text-center">
-						<img class="layui-anim layui-anim-rotate" src="favicon.ico" alt="img" oncontextmenu="return false;" ondragstart="return false;" />
-						<h1 class="site-name wow lightSpeedIn">Q-Blog</h1>
+						<img class="layui-anim layui-anim-rotate" src="/static/images/iconImage.png" alt="img" oncontextmenu="return false;" ondragstart="return false;" />
+						<h1 class="site-name wow lightSpeedIn">Mr. Lan</h1>
 						<p class="site-describe wow slideInLeft">
-							一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码
+							一个Python/Golang程序员的个人技术博客，记录博主学习和成长的过程
+						</p>
+						<p class="site-describe wow slideInLeft">
+							分享Python/Golang/Linux/前端等方面的知识
+						</p>
+						<p class="site-describe wow slideInLeft">
+							当然如果我的人生突然出现了顿悟，我也会分享给大家
 						</p>
 						<p class="site-link text-center wow bounceInRight">
 							<i class="layui-icon layui-icon-link"></i>
-							<a href="http://www.qbl.link">www.qbl.link</a>
+							<a href="http://fdevops.com">www.fdevops.com</a>
 						</p>
 					</div>
 				</div>
@@ -154,137 +144,11 @@
 					<fieldset class="layui-elem-field layui-field-title wow zoomIn">
 						<legend class="text-center">简介</legend>
 						<div class="layui-field-box">
-							<p>一直以来，也总惦记着给自己认认真真的做一套博客，迟迟未动手的原因有很多，没时间、不想维护、懒，都是拖延至今的因素，但究其根本，还是自己拿捏不准自己喜欢的风格，不知道自己内心想要的博客是什么样的。 直到，前几天，忽然发现自己还是喜欢极简风格多一点。于是，趁着闲暇决定动手给自己写一套属于自己风格的博客，也想着以后常写常记常分享，于是本站就这样诞生了。</p>
-							<h1>开发环境</h1>
-							<p><span class="text-bold">V1.0：</span>前端页面使用Layui框架，及其他优秀小插件完成，后台页面使用基于Layui开发的OK-Admin框架模板。网站采用ASP.NET MVC + Entity Framework DbFirst模式作为后台框架，使用MS SQL Server数据库及SqlCacheDependency数据缓存依赖搭建！起初并没有注意页面的美化，只打算完成基本的功能，故视觉体验可能是比较差的。目前整体的主要功能已经实现，后续将会继续完善功能和页面的优化！</p>
-							<p><span class="text-bold">V2.0：</span>在V1.0版本上线后的日常使用中，网站的弊端逐渐暴露了出来，数据大量使用AJAX获取不利于SEO优化、没有接入第三方登录、页面风格不好看等等……因1.0版本实在写的太烂，不合我心意，故开始重构项目，与其说重构还不如说是重写，网站从前端到后台以及数据库的设计都已经大幅度改动。前端页面仍然使用Layui框架完成，后台页面布局改为LayuiAdmin框架模板。项目抛弃了原SqlCacheDependency缓存依赖和臃肿的EF DbFirst模式，改为了更加清爽的EF CodeFirst模式并增加了My Sql、Oracle、MS Sql多数据库的支持。新增了Redis缓存、系统日志、接入第三方登录、伪静态等功能，若浏览过程中发现Bug，欢迎留言反馈。</p>
-							<h1 class="text-center wow fadeInLeft">The End</h1>
-						</div>
-					</fieldset>
-				</div>
-				<div class="time-line-box wow slideInUp">
-					<fieldset class="layui-elem-field layui-field-title">
-						<legend class="text-center">动态</legend>
-						<div class="layui-field-box">
-							<ul id="timeline" class="layui-timeline">
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-									<div class="layui-timeline-content layui-text">
-										<h3 class="layui-timeline-title">2019-09-01 12:00</h3>
-										<p>Q-Blog改版啦，v2.0正式上线。</p>
-									</div>
-								</li>
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-									<div class="layui-timeline-content layui-text">
-										<h3 class="layui-timeline-title">2019-06-25 13:20</h3>
-										<p>最近在重构项目，大幅度更新，所以近期网站更新频率较少，预计2-3个月v2.0版本上线</p>
-									</div>
-								</li>
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-									<div class="layui-timeline-content layui-text">
-										<h3 class="layui-timeline-title">2019-05-11 03:40</h3>
-										<p>本次更新修复了归档日期排序不正确的Bug，另外不得不吐槽西部数码，实在心累半个月网站挂掉5次，访问慢不稳定FTP上传慢，再也不会用西数了</p>
-									</div>
-								</li>
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-									<div class="layui-timeline-content layui-text">
-										<h3 class="layui-timeline-title">2019-04-22 18:00</h3>
-										<p>Q-Blog v1.0正式上线。</p>
-									</div>
-								</li>
-								<li class="layui-timeline-item">
-									<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-								</li>
-							</ul>
-						</div>
-					</fieldset>
-				</div>
-				<div class="sponsor wow zoomIn">
-					<fieldset class="layui-elem-field layui-field-title">
-						<legend class="text-center">打赏名单</legend>
-						<div class="layui-field-box">
-							<table class="layui-table">
-								<colgroup>
-									<col width="150">
-									<col width="200">
-									<col>
-								</colgroup>
-								<thead>
-									<tr>
-										<th>
-											赞助人
-										</th>
-										<th>赞助金额</th>
-										<th>赞助方式</th>
-										<th>赞助日期</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>宗介</td>
-										<td>30.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>20.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>10.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>50.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>80.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>100.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>60.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>150.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>200.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-									<tr>
-										<td>宗介</td>
-										<td>300.00元</td>
-										<td>支付宝扫码</td>
-										<td>2019-09-01</td>
-									</tr>
-								</tbody>
-							</table>
+							<p>开始写博客也有几年的时间了，一直就想自己写一套博客系统，但是一直都耽搁了，要不然就是没时间，要不然就刚开始想要写就放弃了(其实就是懒)，用过wordPress、Github静态网站，也用过51CTO去写博客文章，但是总是会有那么一点点的不太爽的地方，有的时候想给自己的博客网站上添加其他功能的时候，特别麻烦，非常不利于自己定制化的一些东西，因此最近就开始筹备着去尝试自己写一套博客系统出来，这样自己定制起来就非常的方便了，想怎么折腾就怎么折腾。</p>
+							<p>其实这套系统也差点被我放弃，重新使用wordPress来作为我的博客系统了，毕竟它真的很方便，有完整的后台系统，但是说实话，它的后台系统是真的烂啊，很多东西都需要翻墙，甚至如果不去掉Google的字体的话，还会非常的慢，而且，我发现它的网站在国内竟然上不去了，我就果断的放弃了它。</p>
+							<h1>开发环境：</h1>
+							<p>本博客网站前端使用layui实现，接入第三方登陆，一些需要登陆才能操作的动作，不需要额外的去注册，后端使用Golang+Gin+Gorm实现，数据的存储采用的MySQL。</p>
+							<p>非常感谢你的访问，若是在浏览过程中遇到问题或者Bug，欢迎留言告。</p>
 						</div>
 					</fieldset>
 				</div>
@@ -302,7 +166,7 @@
 		<!-- InstanceEndEditable -->    
     </section>
    <footer>
-     <p><a href="http://www.qbl.link">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
+     <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">

@@ -9,13 +9,13 @@
     height: 100%;
     color: #FFFFFF;
     position: relative;
-    background-image: url("../images/bgImage.jpeg");
+    background-image: url("../images/bgimage.png");
     background-position: center center;
     background-attachment: fixed;
 }
 .overlay {
     background-color: #000;
-    opacity: .85;
+    opacity: .73;
     position: absolute;
     top: 0;
     left: 0;
@@ -577,4 +577,14 @@ p.sub-test i {
     .bg-overlay > .text {
         top: 70%;
     }
+}
+
+.card-text-introduction {
+    width: 295px;
+    word-wrap:break-word;         /* 内容存在英语或数字时强制换行 */
+    overflow: hidden;             /* 隐藏溢出部分 */
+    text-overflow: ellipsis;      /* 显示省略符号来代表被隐藏的文本 */
+    display: -webkit-box;         /* 将对象作为弹性伸缩盒子模型显示 */
+    -webkit-box-orient: vertical; /* 设置盒子内排列顺序为纵向 */
+    -webkit-line-clamp: 3;        /* 限制块元素显示的文本的行数 */
 }

@@ -47,9 +47,6 @@ function iniParam() {
 		}
 	});
 
-  
-	
-	
 	//我用的百度编辑器，按照你们自己需求改
 	CodeHighlighting(); //代码高亮
     function CodeHighlighting() {

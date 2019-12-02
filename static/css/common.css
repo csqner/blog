@@ -85,7 +85,7 @@ header {
     position: fixed !important;
     top: 0;
     width: 100%;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,1);
     z-index: 999;
 }
 
@@ -94,8 +94,8 @@ header {
 }
 
 .logo img {
-    margin: 20px 0px 0px 50px;
-    max-width: 130px !important;
+    margin: 10px 0px 0px 50px;
+    max-width: 180px !important;
     z-index: 9999;
 }
 
@@ -126,7 +126,7 @@ header nav > ul > li:hover > a {
 }
 
 header nav > ul > li a {
-    color: rgba(255,255,255,.75);
+    color: rgba(255,255,255,.80);
 }
 
 header nav > ul > li a:hover {
@@ -186,18 +186,18 @@ footer {
     position: relative;
     top: -40px;
     height: 40px;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,1);
 }
 
 footer p, footer p a {
     font-size: 14px;
-    color: rgba(255,255,255,.35);
+    color: rgba(255,255,255,.80);
     line-height: 40px;
     text-align: center;
 }
 
 footer p a:hover {
-    color: rgba(255,255,255,.55);
+    color: rgba(255,255,255,.90);
 }
 /* footer End */
 

@@ -5,13 +5,10 @@
 package router
 
 import (
-	_ "blog/docs"
 	"blog/router/routers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"net/http"
 	"time"
 )
@@ -20,11 +17,8 @@ import (
 func Load(g *gin.Engine) {
 	// 404
 	g.NoRoute(func(c *gin.Context) {
-		c.String(http.StatusNotFound, "The incorrect API route.")
+		c.String(http.StatusNotFound, "404 页面不存在")
 	})
-
-	// swagger api docs
-	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// pprof router
 	pprof.Register(g)

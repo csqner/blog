@@ -10,19 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Q-Blog</title>
+    <title>Mr. Lan</title>
     <!-- InstanceEndEditable -->
-    <meta name="Author" contect="QBL">
-	<meta name="Copyright" content="Q-Blog">
-	<meta name="keywords" content="个人博客,Q-Blog" />
-	<meta name="description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
-	<meta property="og:title" content="Q-Blog" />
-	<meta property="og:title" content="Q-Blog 网站首页" />
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.qbl.link" />
+	<meta property="og:url" content="http://www.fdevops.com" />
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.qbl.link" />
-	<meta property="og:description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
@@ -78,19 +78,19 @@
     <header>
         <nav>
             <div class="logo">
-              <a target='_blank' href="Index.html">
+              <a target='_blank' href="/blog/index">
                     <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
                 </a>
             </div>
             <!-- 汉堡菜单 -->
           <input type="checkbox" id="togglebox" />
             <ul>
-                <li><a href="Index.html">网站首页</a></li>
-                <li><a href="Article.html">学无止境</a></li>
-                <li><a href="Archive.html">文章归档</a></li>
-                <li><a href="Moments.html">瞬时说说</a></li>
-                <li><a href="Resources.html">资源分享</a></li>
-                <li><a href="About.html">关于本站</a></li>
+                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+                <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
+                <li style="border-bottom: 4px solid #5FB878 !important;"><a href="MessageBoard.html" style="font-size: 18px; color: #ffffff;">网友留言</a></li>
+                <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
+                <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
           <label class="menu" for="togglebox">
                 <i class="layui-icon layui-extend-hamburg-menu"></i>
@@ -117,23 +117,18 @@
 
 			<div class='side-bar'>
 				<div class='box'>
-					<a href="About.html"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
+					<a href="/blog/about"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
 				</div>
 				<div class='box'>
-					<a href="Author.html"><div class='side bg-02'><span class='side-content'>关于作者</span></div></a>
+					<a href="/blog/author"><div class='side bg-02'><span class='side-content'>关于博主</span></div></a>
 				</div>
 				<div class='box'>
-					<a href="FriendlyLink.html"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
+					<a href="/blog/links"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
 				</div>
 				<div class='box'>
 					<a href="MessageBoard.html"><div class='side bg-04'><span class='side-content'>网站留言</span></div></a>
 				</div>
-				<div class='box'>
-					<a href="#"><div class='side bg-05'><span class='side-content'>在线音乐</span></div></a>
-				</div>
-				<div class='box'>
-					<a href="SiteMap.html"><div class='side bg-06'><span class='side-content'>站点地图</span></div></a>
-				</div>
+
 			</div>
 		
 		<div class="message-board">
@@ -159,9 +154,9 @@
 					<ul class="blog-comment">
 						<li>
 							<div class="comment-parent">
-								<a href="http://www.qbl.link"><img src="../static/images/nan.png" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">Lonely</a></span>
+									<span class="username"><a href="http://fdevops.com">Lonely</a></span>
 									<span class="layui-badge layui-bg-orange">博主</span>
 								</div>
 								<div class="content comment-text">
@@ -188,10 +183,10 @@
 							</div>
 							<hr />
 							<div class="comment-child">
-								<a href="http://www.qbl.link"><img src="../static/images/nv.png" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/nv.png" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">王多鱼</a></span>
-									<span>回复<a href="http://www.qbl.link" class="to-username">@Lonely</a>：</span>
+									<span class="username"><a href="http://fdevops.com">王多鱼</a></span>
+									<span>回复<a href="http://fdevops.com" class="to-username">@Lonely</a>：</span>
 									<span class="comment-text">不装了摊牌了，这个项目我投了</span>
 								</div>
 								<p class="info">
@@ -214,11 +209,11 @@
 								</div>
 							</div>
 							<div class="comment-child">
-								<a href="http://www.qbl.link"><img src="../static/images/nan.png" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">Lonely</a></span>
+									<span class="username"><a href="http://fdevops.com">Lonely</a></span>
 									<span class="layui-badge layui-bg-orange">博主</span>
-									<span>回复<a href="http://www.qbl.link" class="to-username">@王多鱼</a>：</span>
+									<span>回复<a href="http://fdevops.com" class="to-username">@王多鱼</a>：</span>
 									<span class="comment-text">谢谢王总</span>
 								</div>
 								<p class="info">
@@ -244,9 +239,9 @@
 						</li>
 						 <li>
 							<div class="comment-parent">
-								<a href="http://www.qbl.link"><img src="../static/images/img02.jpg" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/img02.jpg" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">王思聪</a></span>
+									<span class="username"><a href="http://fdevops.com">王思聪</a></span>
 								</div>
 								<div class="content comment-text">
 									我出十个亿，这个项目我投了，明天过来签合同
@@ -272,11 +267,11 @@
 							</div>
 							<hr />
 							<div class="comment-child">
-								<a href="http://www.qbl.link"><img src="../static/images/nan.png" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">Lonely</a></span>
+									<span class="username"><a href="http://fdevops.com">Lonely</a></span>
 									<span class="layui-badge layui-bg-orange">博主</span>
-									<span>回复<a href="http://www.qbl.link" class="to-username">@王思聪</a>：</span>
+									<span>回复<a href="http://fdevops.com" class="to-username">@王思聪</a>：</span>
 									<span class="comment-text">王总，什么钱不钱的不是问题，主要就是我比较喜欢跟您合作</span>
 								</div>
 								<p class="info">
@@ -299,10 +294,10 @@
 								</div>
 							</div>
 							<div class="comment-child">
-								<a href="http://www.qbl.link"><img src="../static/images/nv.png" alt="" /></a>
+								<a href="http://fdevops.com"><img src="../static/images/nv.png" alt="" /></a>
 								<div class="info">
-									<span class="username"><a href="http://www.qbl.link">王多鱼</a></span>
-									<span>回复<a href="http://www.qbl.link" class="to-username">@王思聪</a>：</span>
+									<span class="username"><a href="http://fdevops.com">王多鱼</a></span>
+									<span>回复<a href="http://fdevops.com" class="to-username">@王思聪</a>：</span>
 									<span class="comment-text">小样，跟我王多鱼争项目是不？</span>
 								</div>
 								<p class="info">
@@ -342,7 +337,7 @@
 		<!-- InstanceEndEditable -->    
     </section>
    <footer>
-     <p><a href="http://www.qbl.link">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
+     <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">

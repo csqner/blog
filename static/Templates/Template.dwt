@@ -12,17 +12,17 @@
     <!-- TemplateBeginEditable name="doctitle" -->
     <title>Q-Blog</title>
     <!-- TemplateEndEditable -->
-    <meta name="Author" contect="QBL">
-	<meta name="Copyright" content="Q-Blog">
-	<meta name="keywords" content="个人博客,Q-Blog" />
-	<meta name="description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
-	<meta property="og:title" content="Q-Blog" />
-	<meta property="og:title" content="Q-Blog 网站首页" />
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.qbl.link" />
+	<meta property="og:url" content="http://www.fdevops.com" />
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.qbl.link" />
-	<meta property="og:description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
 	<link href="../css/loading.css" rel="stylesheet" />
 	<link href="../css/scroll-bar.css" rel="stylesheet" />

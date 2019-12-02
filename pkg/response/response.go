@@ -17,6 +17,13 @@ type ResponseCode struct {
 	Data    interface{} `json:"data"`
 }
 
+func HtmlResponse(c *gin.Context, requestUrl string, errorContent string, jumpUrl string) {
+	c.HTML(http.StatusOK, requestUrl, gin.H{
+		"ErrorContent": errorContent,
+		"JumpUrl":      jumpUrl,
+	})
+}
+
 func Response(c *gin.Context, err error, data interface{}, errText string) {
 	code, message := errno.DecodeErr(err)
 

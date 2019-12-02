@@ -10,19 +10,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Q-Blog 关于作者</title>
+    <title>Mr. Lan 关于博主</title>
     <!-- InstanceEndEditable -->
-    <meta name="Author" contect="QBL">
-	<meta name="Copyright" content="Q-Blog">
-	<meta name="keywords" content="个人博客,Q-Blog" />
-	<meta name="description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
-	<meta property="og:title" content="Q-Blog" />
-	<meta property="og:title" content="Q-Blog 网站首页" />
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.qbl.link" />
+	<meta property="og:url" content="http://www.fdevops.com" />
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.qbl.link" />
-	<meta property="og:description" content="Q-Blog，一个.NET程序员的个人博客，记录博主学习和成长之路，分享.NET方面技术和源码。" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
@@ -78,19 +78,19 @@
     <header>
         <nav>
             <div class="logo">
-              <a target='_blank' href="Index.html">
+              <a target='_blank' href="/blog/index">
                     <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
                 </a>
             </div>
             <!-- 汉堡菜单 -->
           <input type="checkbox" id="togglebox" />
             <ul>
-                <li><a href="Index.html">网站首页</a></li>
-                <li><a href="Article.html">学无止境</a></li>
-                <li><a href="Archive.html">文章归档</a></li>
-                <li><a href="Moments.html">瞬时说说</a></li>
-                <li><a href="Resources.html">资源分享</a></li>
-                <li><a href="About.html">关于本站</a></li>
+                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+                <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
+                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
+                <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
           <label class="menu" for="togglebox">
                 <i class="layui-icon layui-extend-hamburg-menu"></i>
@@ -98,16 +98,6 @@
         </nav>
         <div class="clearfix"></div>
     </header>
-<section class="bg-overlay layui-hide">
-        <div class="overlay"></div>
-        <div class="layui-row text py-5">
-            <p class="lead">Keep on going never give up.</p>
-            <h1>
-                我为你翻山越岭，却无心看风景
-            </h1>
-            <a href="#welcome" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-lg">Let's Go</a>
-        </div>
-    </section>
     <section class="container">
 		<!-- InstanceBeginEditable name="EditRegion1" -->
 		
@@ -116,95 +106,100 @@
 		
 		<div class='side-bar'>
 			<div class='box'>
-				<a href="About.html"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
+				<a href="/blog/about"><div class='side bg-01'><span class='side-content'>关于本站</span></div></a>
 			</div>
 			<div class='box'>
-				<a href="Author.html"><div class='side bg-02'><span class='side-content'>关于作者</span></div></a>
+				<a href="/blog/author"><div class='side bg-02'><span class='side-content'>关于博主</span></div></a>
 			</div>
 			<div class='box'>
-				<a href="FriendlyLink.html"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
+				<a href="/blog/links"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
 			</div>
 			<div class='box'>
 				<a href="MessageBoard.html"><div class='side bg-04'><span class='side-content'>网站留言</span></div></a>
 			</div>
-			<div class='box'>
-				<a href="#"><div class='side bg-05'><span class='side-content'>在线音乐</span></div></a>
-			</div>
-			<div class='box'>
-				<a href="SiteMap.html"><div class='side bg-06'><span class='side-content'>站点地图</span></div></a>
-			</div>
+
 		</div>
 		
 		<div class="about">
 			<div class="layui-container">
 				<div class="layui-row synopsis">
 					<div class="layui-col-lg8 layui-col-lg-offset2 text-center">
-						<img class="layui-anim layui-anim-rotate" src="../static/images/nan.png" alt="" oncontextmenu="return false;" ondragstart="return false;" />
-						<h1 class="author-name wow lightSpeedIn">QBL</h1>
-						<p class="author-describe wow slideInLeft">一个大三学生，计算机专业，主修.NET，但行好事，莫问前程。</p>
+						<img class="layui-anim layui-anim-rotate" src="../static/images/iconImage.png" alt="" oncontextmenu="return false;" ondragstart="return false;" />
+						<h1 class="author-name wow lightSpeedIn">Mr. Lan</h1>
+						<p class="author-describe wow slideInLeft">一个历经沧桑的Python/Golang程序员，但行好事，莫问前程。</p>
 						<p class="author-location text-center wow bounceInRight">
-							<i class="layui-icon layui-icon-location"></i>中国-广西
+							<i class="layui-icon layui-icon-location"></i>中国-北京
 						</p>
 					</div>
 				</div>
-				<hr />
 				<div class="layui-row contact wow rollIn">
 					<div class="layui-col-md4 layui-col-md-offset4">
-						<a href="#">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=934744141&site=qq&menu=yes">
 							<i class="layui-icon layui-extend-QQ"></i>
 						</a>
-						<a href="#">
-							<i class="layui-icon layui-extend-weixin"></i>
-						</a>
-						<a href="#">
-							<i class="layui-icon layui-extend-weibo"></i>
-						</a>
-						<a href="#">
+						{{/*<a>*/}}
+							{{/*<i class="layui-icon layui-extend-weixin add-wechat"></i>*/}}
+						{{/*</a>*/}}
+						{{/*<a href="#">*/}}
+							{{/*<i class="layui-icon layui-extend-weibo"></i>*/}}
+						{{/*</a>*/}}
+						<a href="https://github.com/lanyulei">
 							<i class="layui-icon layui-extend-GitHub"></i>
 						</a>
-						<a href="#">
+						<a href="mailto:fdevops@163.com">
 							<i class="layui-icon layui-extend-mail"></i>
 						</a>
 					</div>
 				</div>
-				<div class="introduce">
+				<div class="introduce" style="margin-top: 30px">
 					<fieldset class="layui-elem-field layui-field-title wow zoomIn">
 						<legend class="text-center">简介</legend>
 						<div class="layui-field-box">
-							<h1>个人信息</h1>
-							<p>产品名称：QBL</p>
-							<p>规格：长≈1.8m，净重≈65KG，误差范围±1.5%，数据仅供参考，一切以实物为准</p>
-							<p>产品成分：水约60%，碳水化合物以及脂肪约14%，蛋白质约17%，其他维生素、矿物质、纤维素约9%。</p>
-							<p>原产地：Made in China</p>
-							<p>生产批次：95后</p>
-							<p>保质期：长期有效</p>
-							<p>等级：特级</p>
-							<p>外部包装：原装原配，无拆无修</p>
-							<p>产品介绍：猿界小菜鸡，性别男，爱好女，产品已通过国家质量体系认证，手续齐全，稳定运转二十余年不宕机。</p>
-							<p>功能：我们不生产代码，我们只是代码的搬运工。尽量不生产BUG，非可控因素除外</p>
-							<p>适用人群：老少咸宜</p>
-							<p>注意事项：以上信息，最终解释权归厂家所有。</p>
 							<h1>个人介绍</h1>
 							<p>
-								因为爱好促使我选择了计算机专业，也正因为爱好使得了原本枯燥无味的代码增加了两分趣味。
-								建立博客的目的是想记录自己学习过程中遇到的问题，自己在闲暇之余喜欢练练字，因为练字能使人静下心来远离喧嚣以及内心的浮躁，把练字当做一种放松的方式也算是一种享受。
-								个人平时喜欢独处，相比于集体环境，我更倾向于独立生活。每个人来到这个世界都是独自来的，所以孤独是一个人的生命本质，学会独处，实际上那是在去学习生命最本质的东西。
-								独处会让我们有充分的时间思考、完善、精细自己的一切，规划生活的快慢；独处能使人认清自己有多少能量，哪些可为哪些不可为，切实踏实地面对生活学习，一步一个脚印走好每一步。
-								而思考总是在孤独中产生的，有时候一个人沉思的孤独，看似很心酸，实则更为强大。没有人生来强大，遥远的梦，遥远的你，与其空怀揣梦想，还不如付之行动。
-								一个人青春的保质期不长，我不想以后为自己的碌碌无为而悔恨，为自己的平庸无奇而懊恼，只要还有梦就应该勇敢去追寻。
-								优秀的人很多，只有高度自律，才能使自己变得优秀，希望有一天我也能活出自己所期待的样子。像福尔摩斯一样，穿梭街巷观察平时注意不到的细节，
-								寻觅潜藏在生活里的魔法钥匙。仰望头顶总能见到那盏高悬的月亮，再黯淡的星光也闪烁着来自银河的诗意在流浪，从生活的边角，到远方的故乡。
-								后来许多人问我一个人夜晚踟蹰路上的心情，我想起的却不是孤单和路长，而是波澜壮阔的海洋和天空中闪耀的星光...
+								我是个18岁的男孩，为什么叫男孩呢。因为我的心还是很幼小的。
 							</p>
-							<h1 class="text-center wow fadeInLeft">The End</h1>
+							<p>
+								我是个快就要成年的男人，为什么叫男人呢。因为我有男人所有的东西。
+							</p>
+							<p>
+								哈哈。其实我自己也不是很了解自己，我外表看上去永远是快乐的，但内心却未必。我为很多事担心，操心，劳心，费心，甚至死心！
+							</p>
+							<p>
+								就比说作为一个程序员，我常常会想，如果我不努力学习新的东西会不会被淘汰，毕竟现在计算机的发展太快了，前一秒还热火朝天的讨论，没准下一秒就有人发布新的替代品了。
+							</p>
+							<p>
+								我觉得一个人有了痛苦才能体会快乐的存在，只有曾经的痛苦，才有如今的快乐。
+							</p>
+							<p>
+								人的一生可以分几个阶段吧：幼年，童年，少年，青年，成年，中年，老年。我正处于的是青年，是个少年与成年的桥梁。我回忆少年，因为少年给我带来的无比的快乐；我向往成年，因为成年了就能做许多自己愿意做的事，不在受任何人的阻止和约束。
+							</p>
+							<p>
+								人总要学着慢慢长大，我觉得我经历的也蛮多的了。
+							</p>
+							<p>
+								说了这么多，你还是很不怎么了解我吧。哈哈。那就来认识认识我一下吧，我还是很喜欢交朋友的。
+							</p>
 						</div>
 					</fieldset>
 				</div>
-				<div class="skill-box wow slideInUp">
+				<div class="skill-box wow slideInUp" style="margin-top: 30px">
 					<fieldset class="layui-elem-field layui-field-title">
 						<legend class="text-center">技能</legend>
 						<div class="layui-field-box">
 							<div class="layui-row layui-col-space30">
+								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
+									<p>Python</p>
+									<div class="layui-progress" lay-showPercent="true">
+										<div class="layui-progress-bar" lay-percent="85%"></div>
+									</div>
+								</div>
+								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
+									<p>Golang</p>
+									<div class="layui-progress" lay-showPercent="true">
+										<div class="layui-progress-bar" lay-percent="85%" style="background-color:#d35400 !important;"></div>
+									</div>
+								</div>
 								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
 									<p>Html</p>
 									<div class="layui-progress" lay-showPercent="true">
@@ -224,39 +219,27 @@
 									</div>
 								</div>
 								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>.NET</p>
+									<p>C/C++</p>
 									<div class="layui-progress" lay-showPercent="true">
-										<div class="layui-progress-bar" lay-percent="65%"></div>
+										<div class="layui-progress-bar layui-bg-red" lay-percent="30%"></div>
 									</div>
 								</div>
 								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>Java</p>
+									<p>MySQL</p>
 									<div class="layui-progress" lay-showPercent="true">
-										<div class="layui-progress-bar" lay-percent="25%" style="background-color:#d35400 !important;"></div>
+										<div class="layui-progress-bar layui-bg-orange" lay-percent="60%"></div>
 									</div>
 								</div>
 								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>PHP</p>
-									<div class="layui-progress" lay-showPercent="true">
-										<div class="layui-progress-bar layui-bg-red" lay-percent="28%"></div>
-									</div>
-								</div>
-								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>MS SQL</p>
-									<div class="layui-progress" lay-showPercent="true">
-										<div class="layui-progress-bar layui-bg-orange" lay-percent="68%"></div>
-									</div>
-								</div>
-								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>My SQL</p>
+									<p>Vue</p>
 									<div class="layui-progress" lay-showPercent="true">
 										<div class="layui-progress-bar" lay-percent="60%"></div>
 									</div>
 								</div>
 								<div class="layui-col-md4 layui-col-sm6 layui-col-xs12 progress">
-									<p>Photoshop</p>
+									<p>Bootstrap</p>
 									<div class="layui-progress" lay-showPercent="true">
-										<div class="layui-progress-bar layui-bg-cyan" lay-percent="45%"></div>
+										<div class="layui-progress-bar layui-bg-cyan" lay-percent="70%"></div>
 									</div>
 								</div>
 							</div>
@@ -268,20 +251,13 @@
 
 		<script src="../static/js/side-bar.js"></script>
 		<script>
-			function iniParam() { }
+			function iniParam() {}
 		</script>
-		
-		
-		
-		
-		
-		
-		
-		
+
 		<!-- InstanceEndEditable -->    
     </section>
    <footer>
-     <p><a href="http://www.qbl.link">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
+     <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">

@@ -97,32 +97,11 @@
     margin-right: 0px;
 }
 
-/* 内容 */
-.details-content {
-    padding: 5px;
-}
-.details-content img {
-    margin:5px;
-}
-.details-content p {
-    line-height: 30px;
-}
-.details-content h3 {
-    line-height: 35px;
-    font-size: 15px;
-    font-weight: 600;
-    border-left: 4px solid #1E9FFF;
-    padding-left: 20px;
-    padding-right: 10px;
-    background: #F2F2F2 none repeat scroll 0% 0%;
-    margin: 15px -25px;
-}
-
  /* 内容脚 */
 .details-footer {
     margin-top: 50px;
 }
-.details-footer h3 {
+.details-footer .h3_class {
     line-height: 35px;
     font-size: 15px;
     font-weight: 600;

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Window-target" content="_top">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Mr. Lan 系列教程</title>
+    <!-- InstanceEndEditable -->
+    <meta name="Author" contect="Mr. Lan">
+	<meta name="Copyright" content="Mr. Lan">
+	<meta name="keywords" content="个人博客,Mr. Lan" />
+	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<meta property="og:title" content="Mr. Lan" />
+	<meta property="og:title" content="Mr. Lan 网站首页" />
+	<meta property="og:type" content="个人博客" />
+	<meta property="og:url" content="http://www.fdevops.com" />
+	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
+	<meta property="og:site_name" content="www.fdevops.com" />
+	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link href="../static/css/loading.css" rel="stylesheet" />
+	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
+	<link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
+	<link href="../static/css/common.css" rel="stylesheet" />
+	<link href="../static/css/suspension.css" rel="stylesheet" />
+	<link href="../static/css/animate.css" rel="stylesheet" />
+	<link href="../static/Eextend/iconfont/iconfont.css" rel="stylesheet" />
+	<script src="../static/Eextend/iconfont/iconfont.js"></script>
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/Eextend/layui/layui.js"></script>
+	<script src="../static/js/wow.min.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!--
+               ▄              ▄
+              ▌▒█           ▄▀▒▌
+              ▌▒▒▀▄        ▀▒▒▒▐
+             ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+           ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+         ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+        ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+        ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+       ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+       ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+       ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+      ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒  typecho  ▒▌
+      ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+       ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+       ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+        ▀ yo-du ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+          ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+         ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+        ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+
+        --你好，世界！生活，从敲的第一行代码开始。
+    -->
+<div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_one"></div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">
+              <a target='_blank' href="/blog/index">
+                    <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
+                </a>
+            </div>
+            <!-- 汉堡菜单 -->
+          <input type="checkbox" id="togglebox" />
+            <ul>
+                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+                <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
+                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/series" style="font-size: 18px; color: #ffffff;">系列文章</a></li>
+                <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
+            </ul>
+          <label class="menu" for="togglebox">
+                <i class="layui-icon layui-extend-hamburg-menu"></i>
+            </label>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    <section class="container">
+		<!-- InstanceBeginEditable name="EditRegion1" -->
+		
+		<link href="../static/css/Resources.css" rel="stylesheet" />
+		
+		<div class="layui-container">
+			<div id="tabResource" class="layui-tab layui-tab-brief" lay-filter="tabResource">
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+						<div class="layui-row layui-col-space20">
+							{{ range .series }}
+							<div class="layui-col-lg3 layui-col-md3 layui-col-sm6 layui-col-xs12">
+								<div class="card">
+									{{ $imageValue := .Image }}
+									{{ if eq $imageValue "" }}
+										{{ $imageValue = "/static/images/image_1.png" }}
+									{{ end }}
+									<a target="_blank" href="/blog/series_details?series_id={{ .Id }}">
+										<img src="{{ $imageValue }}" style="width: 265px; height: 170px" alt="">
+									</a>
+									<div class="info">
+										<h4>
+											<a target="_blank" href="/blog/series_details?series_id={{ .Id }}">{{ .Title }}</a>
+										</h4>
+										<small class="small-introduction" style="padding-bottom: 0">
+                                            {{ if eq .Introduction "" }}
+                                                暂无简介
+                                            {{ else }}
+                                                {{ .Introduction }}
+                                            {{ end }}
+										</small>
+									</div>
+									<div class="stars">
+										<a>
+											<i class="layui-icon layui-extend-yanjing"></i>
+											<span>{{ .View }}</span></a>
+										<a>
+											<i class="layui-icon layui-extend-xin"></i>
+											<span>{{ .Awesome }}</span></a>
+									</div>
+								</div>
+							</div>
+							{{ end }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../static/js/Resources.js"></script>
+		
+
+		<!-- InstanceEndEditable -->    
+    </section>
+   <footer>
+     <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
+    </footer>
+    <div id="suspension">
+        <div class="livechat-girl animated">
+          <img class="girl" src="../static/images/a.png" oncontextmenu="return false;" ondragstart="return false;">
+            <div class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
+                <div class="rd-notice-content">嘿，来试试登录吧！</div>
+            </div>
+            <div class="animated-circles">
+                <div class="circle c-1"></div>
+                <div class="circle c-2"></div>
+                <div class="circle c-3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 打字机特效js-->
+<script src="../static/js/typewriter-special-effects.js"></script>
+<script src="../static/js/Template.js"></script>
+<!-- 这个JS展示公告层用的，无关紧要可以删掉 -->
+
+</body>
+<style>
+	.small-introduction {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient:vertical;
+	}
+</style>
+<!-- InstanceEnd -->
+</html>
