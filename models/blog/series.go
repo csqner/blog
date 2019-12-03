@@ -18,3 +18,17 @@ type Series struct {
 func (Series) TableName() string {
 	return "blog_series"
 }
+
+type SeriesDetailsStruct struct {
+	Id     int    `json:"id"`
+	Title  string `json:"title"`
+	Parent int    `json:"parent"`
+	Order  int    `json:"order_id"`
+}
+
+type Tree struct {
+	Id    int    `json:"id"`
+	Text  string `json:"text"`
+	Pid   int    `json:"pid"`
+	Nodes []Tree `json:"nodes"`
+}

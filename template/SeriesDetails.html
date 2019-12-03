@@ -121,7 +121,7 @@
             <div class="details-content-menu">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="input" class="form-control" id="input-select-node" placeholder="Identify node..." value="Parent 1">
+                        <input type="input" class="form-control" id="input-select-node" placeholder="请输入搜索内容" value="">
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -142,7 +142,7 @@
         <div class="livechat-girl animated">
           <img class="girl" src="../static/images/a.png" oncontextmenu="return false;" ondragstart="return false;">
             <div class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
-                <div class="rd-notice-content">嘿，来试试登录吧！</div>
+                <div class="rd-notice-content">嗨，来试试登录吧！</div>
             </div>
             <div class="animated-circles">
                 <div class="circle c-1"></div>
@@ -154,66 +154,34 @@
     <!-- 打字机特效js-->
 <script src="../static/js/typewriter-special-effects.js"></script>
 <script src="../static/js/Template.js"></script>
+<script>
+    function iniParam() {
+        console.log("惊不惊喜，意不意外，被你发现我了啊")
+    }
+</script>
 <!-- 这个JS展示公告层用的，无关紧要可以删掉。 -->
 <script>
     $().ready(function () {
-
-        var defaultData = [
-            {
-                text: "Parent 1",
-                nodes: [
-                    {
-                        text: "Child 1",
-                        nodes: [
-                            {
-                                text: "Grandchild 1"
-                            },
-                            {
-                                id: 1,
-                                text: "Grandchild2Grandchild2Grandchild2Grandchild2Grandchild2Grandchild2Grandchild2"
-                            }
-                        ]
-                    },
-                    {
-                        text: "Child 2"
-                    }
-                ]
-            },
-            {
-                text: "Parent 2"
-            },
-            {
-                text: "Parent 3"
-            },
-            {
-                text: "Parent 5"
-            },
-            {
-                text: "Parent 5"
-            },
-            {
-                text: "Parent 5"
-            },
-            {
-                text: "Parent 5"
-            },
-            {
-                text: "Parent 5"
-            },
-            {
-                text: "Parent 5"
-            }
-        ];
-
+        var defaultData = {{ .titleTree }}
         var initSelectableTree = function() {
             return $('#treeview-selectable').treeview({
+                levels: 2,
                 data: defaultData,
-                multiSelect: $('#chk-select-multi').is(':checked'),
-                onNodeSelected: function(event, node) {
-                    $('#selectable-output').prepend('<p>' + node.text + ' was selected</p>');
+                // enableLinks: true,
+                onNodeSelected: function (event, node) {
+                    console.log(node.id)
+                    $(this).treeview('unselectNode', [node.nodeId, { silent: false }]);
                 },
                 onNodeUnselected: function (event, node) {
-                    $('#selectable-output').prepend('<p>' + node.text + ' was unselected</p>');
+                    $(this).treeview('selectNode', [node.nodeId, { silent: true }]);
+                },
+                onNodeCollapsed:function(event, node){
+                    $.each(node.nodes, function(){
+                        if(this.state.selected){
+                            $('#treeview-selectable').treeview('selectNode', [ node.nodeId, { silent: true } ]);
+                            return
+                        }
+                    });
                 }
             });
         };
@@ -229,6 +197,12 @@
             selectableNodes = findSelectableNodes();
             $('.select-node').prop('disabled', !(selectableNodes.length >= 1));
         });
+
+        // 默认选中一个菜单
+        $selectableTree.treeview('selectNode',[0,{silent:true}]);
+        var jsonDataObject = JSON.parse(defaultData)
+        // 获取默认节点的内容
+
     });
 </script>
 <style>

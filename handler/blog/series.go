@@ -4,7 +4,8 @@ import (
 	"blog/models/blog"
 	"blog/pkg/connection"
 	. "blog/pkg/response"
-	"fmt"
+	"blog/pkg/tree"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -35,13 +36,7 @@ func SeriesDetailsHandler(c *gin.Context) {
 		return
 	}
 
-	var seriesDetailsList []struct {
-		Id     int    `json:"id"`
-		Title  string `json:"title"`
-		Parent int    `json:"parent"`
-		Order  int    `json:"order_id"`
-	}
-
+	var seriesDetailsList []blog.SeriesDetailsStruct
 	err := connection.DB.Self.Table("blog_series_details").
 		Select("id, title, parent, order_id").
 		Where("series_id = ?", seriesId).Scan(&seriesDetailsList).Error
@@ -50,7 +45,14 @@ func SeriesDetailsHandler(c *gin.Context) {
 		return
 	}
 
-	fmt.Println(seriesDetailsList)
+	treeValue := tree.SuperSeriesTree(seriesDetailsList, 0)
+	jsonBytes, err := json.Marshal(treeValue)
+	if err != nil {
+		HtmlResponse(c, "error.html", err.Error(), "/blog/series")
+		return
+	}
 
-	c.HTML(http.StatusOK, "SeriesDetails.html", gin.H{})
+	c.HTML(http.StatusOK, "SeriesDetails.html", gin.H{
+		"titleTree": string(jsonBytes),
+	})
 }
