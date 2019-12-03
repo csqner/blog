@@ -305,22 +305,24 @@ func ArchiveHandler(c *gin.Context) {
 
 	var ArchiveDataList blog.ArchiveData
 	for _, content := range contentList {
-		IsExist := false
-		// 判断是否存在，存在则追加
-		for index, Article := range ArchiveDataList.ArticleGroup {
-			if Article.ArchiveDataString == content.CreatedAt {
-				IsExist = true
-				ArchiveDataList.ArticleGroup[index].ArticleData = append(ArchiveDataList.ArticleGroup[index].ArticleData, content)
-				break
+		if content.CreatedAt != "" {
+			IsExist := false
+			// 判断是否存在，存在则追加
+			for index, Article := range ArchiveDataList.ArticleGroup {
+				if Article.ArchiveDataString == content.CreatedAt {
+					IsExist = true
+					ArchiveDataList.ArticleGroup[index].ArticleData = append(ArchiveDataList.ArticleGroup[index].ArticleData, content)
+					break
+				}
 			}
-		}
 
-		// 添加新数据
-		if IsExist == false {
-			ArchiveDataList.ArticleGroup = append(ArchiveDataList.ArticleGroup, blog.ArticleDataStruct{
-				ArchiveDataString: content.CreatedAt,
-				ArticleData:       []blog.ContentListStruct{content},
-			})
+			// 添加新数据
+			if IsExist == false {
+				ArchiveDataList.ArticleGroup = append(ArchiveDataList.ArticleGroup, blog.ArticleDataStruct{
+					ArchiveDataString: content.CreatedAt,
+					ArticleData:       []blog.ContentListStruct{content},
+				})
+			}
 		}
 	}
 

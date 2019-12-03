@@ -5,6 +5,7 @@
 package router
 
 import (
+	"blog/handler/blog"
 	"blog/router/routers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/pprof"
@@ -33,6 +34,9 @@ func Load(g *gin.Engine) {
 		MaxAge:           12 * time.Hour,
 	}
 	g.Use(cors.New(config))
+
+	// index
+	g.GET("", blog.IndexHandler)
 
 	// blog
 	routers.BlogRouter(g)
