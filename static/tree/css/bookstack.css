@@ -1190,7 +1190,7 @@ li.L1, li.L3, li.L5, li.L7, li.L9{background-color: transparent;}
 .hung-read-link{margin: 30px 0px 180px;line-height: 200%;}
 .hung-read-link .col-xs-12{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding-left: 0px;}
 .hung-read-link .col-xs-12 a{margin-left: 5px;}
-.bookstack-bars{position: fixed;right: 15px;bottom: 30px;border:1px solid rgba(0,0,0,.1);
+.bookstack-bars{position: fixed;right: 15px;bottom: 200px;border:1px solid rgba(0,0,0,.1);
     z-index: 9999;box-shadow: 0px 1px 3px rgba(0,0,0,.1);border-radius: 4px;background-color: #fff;
 }
 .bookstack-bars ul,.bookstack-bars li{list-style: none;padding:0px;margin: 0px;}

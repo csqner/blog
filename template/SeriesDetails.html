@@ -74,7 +74,7 @@
     </style>
 
 </head>
-<body>
+<body class="article-menu-hide">
 <!--
            ▄              ▄
           ▌▒█           ▄▀▒▌
@@ -169,7 +169,6 @@
                         </div>
                         <div class="article-content">
                             <div class="help-block article-info" style="padding-bottom: 20px;">
-                                <span class="alink tooltips" title="测试"><i class="fa fa-angle-right"></i> <a target="_blank" rel="nofollow" href="">测试</a> <i class="fa fa-angle-left"></i> </span>
                                 <span><i class="fa fa-user-o"></i> <a target="_blank" title="来源" href="">来源 Mr. Lan</a></span>
                                 <span><i class="fa fa-eye"></i> 浏览 <i class="read-count">1000</i></span>
                                 <span class="hidden-xs"><a href="#" data-target="#ModalQRcode" data-toggle="modal"><i class="fa fa-qrcode"></i> 扫码</a></span>
@@ -211,20 +210,6 @@
                                     <li class="visible-xs visible-sm bars-menu bars-menu-hide">
                                         <a title="分享" href="javascript:" data-toggle="modal" data-target="#ModalShare"><i class="fa fa-share-alt"></i></a>
                                     </li>
-                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
-                                        <a title="阅读记录" class="showModalHistory" href="{{ $BookId }}" rel="nofollow"><i class="fa fa-clock-o"></i></a>
-                                    </li>
-                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
-                                        <a rel="nofollow" href="{{ $BookId }}" data-bookid="{{ $BookId }}" class="showModalBookmark" title="书签">
-                                            <img src="/static/tree/images/icon-bookmark-list.png" alt="书签">
-                                        </a>
-                                    </li>
-                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
-                                        <a href="" data-docid="{{ $DocId }}" rel="nofollow" class="bookmark-action">
-                                            <span class="bookmark-add {{if $Bookmark}}hide{{end}}"> <img src="/static/tree/images/icon-bookmark-add.png" alt="添加书签"></span>
-                                            <span class="bookmark-remove {{if $Bookmark}}{{else}}hide{{end}}"> <img src="/static/tree/images/icon-bookmark-remove.png" alt="移除书签"></span>
-                                        </a>
-                                    </li>
                                     <li class="book-menu visible-xs visible-sm">
                                         <a href="javascript:void(0);" title="菜单"><i class="fa fa-align-justify"></i></a>
                                     </li>
@@ -260,9 +245,7 @@
                     <div class="article-menu">
                         <div class="article-menu-detail">
                             <!-- result -->
-                            <ul>
-                                <li id="173865" class="jstree-open"><a href="" title="0. 介绍" class="jstree-clicked">0. 介绍</a></li>
-                            </ul>
+                            <ul><li><a href='http://baidu.com' title='关于'>关于</a></li><li><a href='http://baidu.com' title='基础入门'>基础入门</a></li><li><a href='http://baidu.com' title='字符串'>字符串</a><ul><li><a href='http://baidu.com' title='字符串及操作'>字符串及操作</a></li><li><a href='http://baidu.com' title='字符串与bytes'>字符串与bytes</a></li><li><a href='http://baidu.com' title='字符串格式化'>字符串格式化</a></li></ul></li><li><a href='http://baidu.com' title='线性结构'>线性结构</a><ul><li><a href='http://baidu.com' title='多版本环境管理'>多版本环境管理</a></li><li><a href='http://baidu.com' title='线性结构介绍与切片'>线性结构介绍与切片</a></li><li><a href='http://baidu.com' title='线性结构的解构与封装'>线性结构的解构与封装</a></li></ul></li><li><a href='http://baidu.com' title='集合及操作'>集合及操作</a></li></ul>
                         </div>
                         <div class="search-result">
                             <div class="search-empty" style="display: block;">
@@ -278,8 +261,6 @@
             </div>
             <div class="manual-mask"></div>
         </div>
-        <span class="article-toggle tooltips" title="展开/收起文章目录"><img alt="展开/收起文章目录" src="/static/tree/images/toggle.png"/></span>
-        <div id="menu-hidden" style="display: none;"></div>
     </div>
 </div>
 <footer style="float: left; width: 100%;">

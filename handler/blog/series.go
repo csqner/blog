@@ -3,8 +3,10 @@ package blog
 import (
 	"blog/models/blog"
 	"blog/pkg/connection"
+	"blog/pkg/logger"
 	. "blog/pkg/response"
 	"blog/pkg/tree"
+	"bytes"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -39,6 +41,7 @@ func SeriesDetailsHandler(c *gin.Context) {
 	var seriesDetailsList []blog.SeriesDetailsStruct
 	err := connection.DB.Self.Table("blog_series_details").
 		Select("id, title, parent, order_id").
+		Order("id, order_id").
 		Where("series_id = ?", seriesId).Scan(&seriesDetailsList).Error
 	if err != nil {
 		HtmlResponse(c, "error.html", err.Error(), "/blog/series")
@@ -46,6 +49,11 @@ func SeriesDetailsHandler(c *gin.Context) {
 	}
 
 	treeValue := tree.SuperSeriesTree(seriesDetailsList, 0)
+
+	buf := bytes.NewBufferString("")
+	tree.GetDocumentTree(treeValue, buf)
+	logger.Error(buf)
+
 	jsonBytes, err := json.Marshal(treeValue)
 	if err != nil {
 		HtmlResponse(c, "error.html", err.Error(), "/blog/series")

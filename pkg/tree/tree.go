@@ -1,6 +1,10 @@
 package tree
 
-import "blog/models/blog"
+import (
+	"blog/models/blog"
+	"bytes"
+	"fmt"
+)
 
 /*
   @Author : lanyulei
@@ -22,4 +26,18 @@ func SuperSeriesTree(allSeries []blog.SeriesDetailsStruct, pid int) []blog.Tree 
 		}
 	}
 	return treeArray
+}
+
+func GetDocumentTree(array []blog.Tree, buf *bytes.Buffer) {
+	buf.WriteString("<ul>")
+
+	for _, item := range array {
+		buf.WriteString("<li>")
+		buf.WriteString(fmt.Sprintf("<a href='http://baidu.com' title='%s'>%s</a>", item.Text, item.Text))
+		if len(item.Nodes) > 0 {
+			GetDocumentTree(item.Nodes, buf)
+		}
+		buf.WriteString("</li>")
+	}
+	buf.WriteString("</ul>")
 }
