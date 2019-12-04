@@ -4,6 +4,16 @@
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <head>
+    {{ $SeoTitle := "Python基础到高级" }}
+    {{ $SeoKeywords := "Python,Django" }}
+    {{ $SeoDescription := "这是一个从Python初级到高级的过程" }}
+    {{ $BookName := "Python基础到高级" }}
+    {{ $Identify := "http://baidu.com" }}
+    {{ $Wxacode := true }}
+    {{ $BookId := 1 }}
+    {{ $DocId := 10 }}
+    {{ $Bookmark := "测试" }}
+    {{ $Title := "关于" }}
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Window-target" content="_top">
@@ -13,145 +23,279 @@
     <title>Mr. Lan</title>
     <!-- InstanceEndEditable -->
     <meta name="Author" contect="Mr. Lan">
-	<meta name="Copyright" content="Mr. Lan">
-	<meta name="keywords" content="个人博客,Mr. Lan" />
-	<meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
-	<meta property="og:title" content="Mr. Lan" />
-	<meta property="og:title" content="Mr. Lan 网站首页" />
-	<meta property="og:type" content="个人博客" />
-	<meta property="og:url" content="http://www.fdevops.com" />
-	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
-	<meta property="og:site_name" content="www.fdevops.com" />
-	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	<link href="../static/css/loading.css" rel="stylesheet" />
-	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
-	<link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
-	<link href="../static/css/common.css" rel="stylesheet" />
-	<link href="../static/css/suspension.css" rel="stylesheet" />
-	<link href="../static/css/animate.css" rel="stylesheet" />
-	<link href="../static/Eextend/iconfont/iconfont.css" rel="stylesheet" />
-
-    <!-- Required Stylesheets -->
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/tree/bootstrap-treeview.min.css" rel="stylesheet">
-
-	<script src="../static/Eextend/iconfont/iconfont.js"></script>
-	<script src="../static/js/jquery.min.js"></script>
-	<script src="../static/Eextend/layui/layui.js"></script>
-	<script src="../static/js/wow.min.js"></script>
-
-    <!-- Required Javascript -->
-    <script src="/static/tree/bootstrap-treeview.min.js"></script>
-
+    <meta name="Copyright" content="Mr. Lan">
+    <meta name="keywords" content="个人博客,Mr. Lan" />
+    <meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+    <meta property="og:title" content="Mr. Lan" />
+    <meta property="og:title" content="Mr. Lan 网站首页" />
+    <meta property="og:type" content="个人博客" />
+    <meta property="og:url" content="http://www.fdevops.com" />
+    <meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
+    <meta property="og:site_name" content="www.fdevops.com" />
+    <meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="../static/css/loading.css" rel="stylesheet" />
+    <link href="../static/css/scroll-bar.css" rel="stylesheet" />
+    <link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
+    <link href="../static/css/common.css" rel="stylesheet" />
+    <link href="../static/css/suspension.css" rel="stylesheet" />
+    <link href="../static/css/animate.css" rel="stylesheet" />
+    <link href="../static/Eextend/iconfont/iconfont.css" rel="stylesheet" />
+    <script src="../static/Eextend/iconfont/iconfont.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/Eextend/layui/layui.js"></script>
+    <script src="../static/js/wow.min.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <link href="/static/tree/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/tree/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/tree/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/static/tree/editor.md/css/editormd.preview.css" rel="stylesheet">
+    <link href="/static/tree/css/toast.css" rel="stylesheet">
+    <link href="/static/tree/css/bookstack.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tree/katex/katex.min.css">
+    <script src="/static/tree/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="/static/tree/respond.js/1.4.2/respond.min.js"></script>
+
+    <style>
+        .editormd-preview-container ol.linenums li code, .editormd-html-preview ol.linenums li code{
+            display: block;
+            white-space: pre;
+        }
+        li.L1, li.L3, li.L5, li.L7, li.L9{background-color: transparent;}
+        .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint{border-color: transparent;}
+        body{-webkit-overflow-scrolling:touch;}
+        .alink,.alink a{color: #888 !important;}
+        .alink:hover,.alink a:hover{color: red !important;}
+    </style>
+
 </head>
 <body>
-    <!--
-               ▄              ▄
-              ▌▒█           ▄▀▒▌
-              ▌▒▒▀▄        ▀▒▒▒▐
-             ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
-           ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
-         ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
-        ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
-        ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
-       ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
-       ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-       ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
-      ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒  typecho  ▒▌
-      ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
-       ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-       ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-        ▀ yo-du ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
-          ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
-         ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
-        ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+<!--
+           ▄              ▄
+          ▌▒█           ▄▀▒▌
+          ▌▒▒▀▄        ▀▒▒▒▐
+         ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+       ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+     ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+   ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+   ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+  ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒  typecho  ▒▌
+  ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+   ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+    ▀ yo-du ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+      ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+     ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
 
-        --你好，世界！生活，从敲的第一行代码开始。
-    -->
-    <div id="loading">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <div class="object" id="object_four"></div>
-                <div class="object" id="object_three"></div>
-                <div class="object" id="object_two"></div>
-                <div class="object" id="object_one"></div>
-            </div>
+    --你好，世界！生活，从敲的第一行代码开始。
+-->
+{{/*<div id="loading">*/}}
+{{/*    <div id="loading-center">*/}}
+{{/*        <div id="loading-center-absolute">*/}}
+{{/*            <div class="object" id="object_four"></div>*/}}
+{{/*            <div class="object" id="object_three"></div>*/}}
+{{/*            <div class="object" id="object_two"></div>*/}}
+{{/*            <div class="object" id="object_one"></div>*/}}
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+{{/*</div>*/}}
+<header>
+    <nav>
+        <div class="logo">
+            <a target='_blank' href="/blog/index">
+                <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
+            </a>
         </div>
-    </div>
-    <header>
-        <nav>
-            <div class="logo">
-              <a target='_blank' href="/blog/index">
-                    <img src="../static/images/logo.png" oncontextmenu="return false;" ondragstart="return false;" />
-                </a>
-            </div>
-            <!-- 汉堡菜单 -->
-          <input type="checkbox" id="togglebox" />
-            <ul>
-                <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
-                <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
-                <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
-                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
-                <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
-                <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
-            </ul>
-          <label class="menu" for="togglebox">
-                <i class="layui-icon layui-extend-hamburg-menu"></i>
-            </label>
-        </nav>
-        <div class="clearfix"></div>
-    </header>
-		<!-- InstanceBeginEditable name="EditRegion1" -->
-    <link href="../static/css/comment.css" rel="stylesheet" />
-    <link href="../static/css/ResourcesDetails.css" rel="stylesheet" />
-    <!-- 代码高亮 -->
-    <link href="../static/Eextend/highlight/styles/monokai-sublime.css" rel="stylesheet" />
-    <script src="../static/Eextend/highlight/highlight.pack.js"></script>
-    <div class="layui-container container" style="padding: 0 15px 0 15px">
-        <div class="left-title title_content">
-            <div class="details-content-title details-content">
-                Python从基础到高级
-            </div>
-            <div class="details-content-menu">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="input" class="form-control" id="input-select-node" placeholder="请输入搜索内容" value="">
+        <!-- 汉堡菜单 -->
+        <input type="checkbox" id="togglebox" />
+        <ul>
+            <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
+            <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
+            <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
+            <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+            <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
+            <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
+        </ul>
+        <label class="menu" for="togglebox">
+            <i class="layui-icon layui-extend-hamburg-menu" style="position: relative; top: 12.5px; left: 8.5px;font-size: 32px; font-weight: normal"></i>
+        </label>
+    </nav>
+    <div class="clearfix"></div>
+</header>
+<!-- InstanceBeginEditable name="EditRegion1" -->
+<link href="../static/css/comment.css" rel="stylesheet" />
+<link href="../static/css/ResourcesDetails.css" rel="stylesheet" />
+<!-- 代码高亮 -->
+<link href="../static/Eextend/highlight/styles/monokai-sublime.css" rel="stylesheet" />
+<script src="../static/Eextend/highlight/highlight.pack.js"></script>
+<div class="layui-container container" style="padding: 0">
+    <div class="title_content">
+        <div class="m-manual manual-mode-view manual-reader">
+            <div class="navbar navbar-static-top manual-head" role="banner">
+                <div class="container-fluid">
+                    <div class="navbar-header pull-left manual-title">
+                        <span class="slidebar" id="slidebar"><i class="fa fa-align-justify"></i></span>
+                        <a href="{{ $Identify }}" title="{{ $BookName }}" class="book-title">{{ $BookName }}</a>
+                        <span style="font-size: 12px;font-weight: 100;"></span>
+                    </div>
+                    <div class="navbar-header pull-right manual-menu">
+                        <div class="bookstack-item">
+                            <a title="下载" href="javascript:" data-toggle="modal" data-target="#ModalDownload" class="btn btn-light"><i class="fa fa-cloud-download"></i> 下载</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div id="treeview-selectable" class=""></div>
-                </div>
             </div>
-        </div>
-        <div class="right-content title_content">
-            <div class="content-title-div">
+            <div class="container-fluid manual-body">
 
+                <div class="manual-right">
+                    <div class="manual-article">
+                        <div class="article-head">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                                        <h1 id="article-title">{{ $Title }}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                            <div class="help-block article-info" style="padding-bottom: 20px;">
+                                <span class="alink tooltips" title="测试"><i class="fa fa-angle-right"></i> <a target="_blank" rel="nofollow" href="">测试</a> <i class="fa fa-angle-left"></i> </span>
+                                <span><i class="fa fa-user-o"></i> <a target="_blank" title="来源" href="">来源 Mr. Lan</a></span>
+                                <span><i class="fa fa-eye"></i> 浏览 <i class="read-count">1000</i></span>
+                                <span class="hidden-xs"><a href="#" data-target="#ModalQRcode" data-toggle="modal"><i class="fa fa-qrcode"></i> 扫码</a></span>
+                                <span><a href="#" data-target="#ModalShare" data-toggle="modal"><i class="fa fa-share-alt"></i> 分享</a></span>
+                                <span class="pull-right hidden-xs tooltips" title="更新时间"><i class="fa fa-clock-o"></i> <i class="updated-at">2019-05-05 15:04:05</i></span>
+                            </div>
+                            {{if true}}
+                                <div class="ap ap-content-top mgb-15px">
+                                    测试
+                                </div>
+                            {{end}}
+                            <article class="article-body  {{if eq "markdown" "markdown"}}markdown-body editormd-preview-container{{else}}editor-content{{end}}"  id="page-content">
+                                true
+                            </article>
+                            {{if true}}
+                                <div class="ap ap-content-bottom mgt-15px">
+                                    测试
+                                </div>
+                            {{end}}
+                            <div class="row hung-read-link">
+                                <div class="col-xs-12 hung-pre" style="display: none">
+                                    <span class="text-muted">上一篇:</span><a href="#"></a>
+                                </div>
+                                <div class="col-xs-12 hung-next" style="display: none">
+                                    <span class="text-muted">下一篇:</span><a href="#"></a>
+                                </div>
+                            </div>
+
+                            {{/*<div class="jump-top">*/}}
+                            {{/*<a href="javascript:;" class="view-backtop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>*/}}
+                            {{/*</div>*/}}
+                            <div class="bookstack-bars">
+                                <ul>
+
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide"><a href="/" title="首页"><i class="fa fa-home"></i></a></li>
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
+                                        <a title="下载" href="javascript:" data-toggle="modal" data-target="#ModalDownload"><i class="fa fa-cloud-download"></i></a>
+                                    </li>
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
+                                        <a title="分享" href="javascript:" data-toggle="modal" data-target="#ModalShare"><i class="fa fa-share-alt"></i></a>
+                                    </li>
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
+                                        <a title="阅读记录" class="showModalHistory" href="{{ $BookId }}" rel="nofollow"><i class="fa fa-clock-o"></i></a>
+                                    </li>
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
+                                        <a rel="nofollow" href="{{ $BookId }}" data-bookid="{{ $BookId }}" class="showModalBookmark" title="书签">
+                                            <img src="/static/tree/images/icon-bookmark-list.png" alt="书签">
+                                        </a>
+                                    </li>
+                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
+                                        <a href="" data-docid="{{ $DocId }}" rel="nofollow" class="bookmark-action">
+                                            <span class="bookmark-add {{if $Bookmark}}hide{{end}}"> <img src="/static/tree/images/icon-bookmark-add.png" alt="添加书签"></span>
+                                            <span class="bookmark-remove {{if $Bookmark}}{{else}}hide{{end}}"> <img src="/static/tree/images/icon-bookmark-remove.png" alt="移除书签"></span>
+                                        </a>
+                                    </li>
+                                    <li class="book-menu visible-xs visible-sm">
+                                        <a href="javascript:void(0);" title="菜单"><i class="fa fa-align-justify"></i></a>
+                                    </li>
+                                    <li class="visible-xs visible-sm bars-menu-toggle">
+                                        <a href="#" title="更多功能"><i class="fa fa-plus-circle"></i><i class="fa fa-minus-circle hide"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="view-backtop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="manual-left">
+                    <div class="article-search" data-bookid="{{$BookId}}">
+                        <form id="searchForm" action="/read/{{$Identify}}/search" method="post">
+                            <div class="input-group">
+                                <input type="text" name="keyword" placeholder="Search..." autocomplete="off" class="form-control">
+                                <span class="input-group-addon input-group-addon-clear"><i class="fa fa-remove"></i></span>
+                                <span class="input-group-addon">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                            </div>
+                        </form>
+                        <div class="pull-right hidden-xs">
+                            <i class="fa fa-align-justify"></i>
+                        </div>
+                    </div>
+                    <div class="article-menu">
+                        <div class="article-menu-detail">
+                            result
+                        </div>
+                        <div class="search-result">
+                            <div class="search-empty" style="display: block;">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                <b class="text">暂无相关搜索结果！</b>
+                            </div>
+                            <ul class="search-list" id="searchList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="manual-progress"><b class="progress-bar"></b></div>
             </div>
+            <div class="manual-mask"></div>
+        </div>
+        <span class="article-toggle tooltips" title="展开/收起文章目录"><img alt="展开/收起文章目录" src="/static/tree/images/toggle.png"/></span>
+        <div id="menu-hidden" style="display: none;"></div>
+    </div>
+</div>
+<footer style="float: left; width: 100%;">
+    <p style="margin: 0"><a href="http://www.fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
+</footer>
+<div id="suspension">
+    <div class="livechat-girl animated">
+        <img alt="" class="girl" src="../static/images/a.png" oncontextmenu="return false;" ondragstart="return false;">
+        <div class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
+            <div class="rd-notice-content">嗨，来试试登录吧！</div>
+        </div>
+        <div class="animated-circles">
+            <div class="circle c-1"></div>
+            <div class="circle c-2"></div>
+            <div class="circle c-3"></div>
         </div>
     </div>
-    <footer style="float: left; width: 100%;">
-      <p style="margin: 0"><a href="http://www.fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
-    </footer>
-    <div id="suspension">
-        <div class="livechat-girl animated">
-          <img class="girl" src="../static/images/a.png" oncontextmenu="return false;" ondragstart="return false;">
-            <div class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
-                <div class="rd-notice-content">嗨，来试试登录吧！</div>
-            </div>
-            <div class="animated-circles">
-                <div class="circle c-1"></div>
-                <div class="circle c-2"></div>
-                <div class="circle c-3"></div>
-            </div>
-        </div>
-    </div>
-    <!-- 打字机特效js-->
+</div>
+<!-- 打字机特效js-->
 <script src="../static/js/typewriter-special-effects.js"></script>
 <script src="../static/js/Template.js"></script>
 <script>
@@ -159,58 +303,88 @@
         console.log("惊不惊喜，意不意外，被你发现我了啊")
     }
 </script>
-<!-- 这个JS展示公告层用的，无关紧要可以删掉。 -->
-<script>
-    $().ready(function () {
-        var defaultData = {{ .titleTree }}
-        var initSelectableTree = function() {
-            return $('#treeview-selectable').treeview({
-                levels: 2,
-                data: defaultData,
-                // enableLinks: true,
-                onNodeSelected: function (event, node) {
-                    console.log(node.id)
-                    $(this).treeview('unselectNode', [node.nodeId, { silent: false }]);
-                },
-                onNodeUnselected: function (event, node) {
-                    $(this).treeview('selectNode', [node.nodeId, { silent: true }]);
-                },
-                onNodeCollapsed:function(event, node){
-                    $.each(node.nodes, function(){
-                        if(this.state.selected){
-                            $('#treeview-selectable').treeview('selectNode', [ node.nodeId, { silent: true } ]);
-                            return
-                        }
-                    });
+    {{/*<script src="/static/tree/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>*/}}
+    <script src="/static/tree/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+    {{/*<script src="/static/tree/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>*/}}
+    <script src="/static/tree/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript" src="/static/tree/nprogress/nprogress.js"></script>
+    <script type="text/javascript" src="/static/tree/highlight/highlight.js"></script>
+    <script type="text/javascript" src="/static/tree/highlight/highlightjs-line-numbers.min.js"></script>
+    <script type="text/javascript" src="/static/tree/js/jquery.highlight.js"></script>
+    <script type="text/javascript" src="/static/tree/js/toast.script.js"></script>
+    <script type="text/javascript" src="/static/tree/js/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/static/tree/js/clipboard.min.js"></script>
+    <script type="text/javascript" src="/static/tree/katex/katex.min.js"></script>
+    <script type="text/javascript" src="/static/tree/js/bookstack.js?version={{$.Version}}"></script>
+    <script type="text/javascript" src="/static/tree/js/main.js?version={{$.Version}}"></script>
+
+    <script type="text/javascript">
+        'use strict';
+        $(function () {
+
+            var keywords="{{.Keywords}}";
+            if (keywords){
+                var wds =keywords.split(","),l=wds.length;
+                for (var i = 0; i < l; i++) {
+                    $(".markdown-body").highlight(wds[i].trim());
+                }
+            }
+
+            $("#searchList").on("click","a",function () {
+                var id = $(this).attr("data-id");
+                var url = id;
+                var _this=$(this);
+                _this.parent("li").siblings().find("a").removeClass("active");
+                _this.addClass("active");
+                load_doc(url,_this.attr("data-wd"));
+            });
+            //以https或者http开头的url链接，加上target='_blank'
+            $(".markdown-body").on("click","a",function (e) {
+                e.preventDefault();
+                var href=$(this).attr("href"),hrefLower=href.toLowerCase();
+                if($(this).attr("target")=="_blank" ||hrefLower.indexOf("http://")==0 || hrefLower.indexOf("https://")==0 ){
+                    window.open(href);
+                }else{
+                    location.href=href;
                 }
             });
-        };
-        var $selectableTree = initSelectableTree();
 
-        var findSelectableNodes = function() {
-            return $selectableTree.treeview('search', [ $('#input-select-node').val(), { ignoreCase: false, exactMatch: false } ]);
-        };
-        var selectableNodes = findSelectableNodes();
+            show_copy_btn();
 
-        // Select/unselect/toggle nodes
-        $('#input-select-node').on('keyup', function (e) {
-            selectableNodes = findSelectableNodes();
-            $('.select-node').prop('disabled', !(selectableNodes.length >= 1));
+            $(".tooltips").tooltip();
+            $("#qrcode").qrcode(location.href);
+
+            var clipboard = new ClipboardJS('.btn-copy',{
+                // 通过target指定要复印的节点
+                target: function(trigger) {
+                    return trigger.nextElementSibling;
+                }
+            });
+
+            clipboard.on('success', function(e) {
+                console.info('Copy Content：', e.text);
+                alertTips("success","代码复制成功",3000,"");
+            });
+
+            clipboard.on('error', function(e) {
+                console.log("Copy Error：",e);
+            });
+
+            $(".book-menu").click(function () {
+                $(".slidebar").trigger("click");
+            });
+
+            $(".article-toggle").click(function () {
+                if($("body").hasClass("article-menu-hide")){
+                    $("body").removeClass("article-menu-hide");
+                }else{
+                    $("body").addClass("article-menu-hide");
+                }
+            });
         });
-
-        // 默认选中一个菜单
-        $selectableTree.treeview('selectNode',[0,{silent:true}]);
-        var jsonDataObject = JSON.parse(defaultData)
-        // 获取默认节点的内容
-
-    });
-</script>
-<style>
-    ul, ol {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-</style>
+    </script>
 </body>
 <!-- InstanceEnd -->
 </html>
