@@ -10,6 +10,6 @@ import (
 */
 
 func LoginRouter(g *gin.Engine) {
-	g.GET("/toLogin", blog.GetAuthCode)
-	g.GET("/qqLogin", blog.GetToken)
+	g.GET("/toLogin", blog.ToLoginHandler)
+	g.GET("/qqLogin", blog.CallbackHandler)
 }
