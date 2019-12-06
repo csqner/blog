@@ -109,7 +109,7 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
         }
         //登录事件
         function login() {
-			layer.msg("登录成功！");
+            window.location.href = "/toLogin?urls=" + window.location.href;
 			setStyle(true);
         }
 

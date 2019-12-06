@@ -37,7 +37,7 @@ func main() {
 	router.Load(g)
 
 	// 运行程序
-	err := g.Run(":8081")
+	err := g.Run(":9090")
 	if err != nil {
 		logger.Error("启动失败")
 		panic(err)

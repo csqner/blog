@@ -41,6 +41,6 @@ func Load(g *gin.Engine) {
 	// blog
 	routers.BlogRouter(g)
 
-	// blog type
-	routers.TypeRouter(g)
+	// login
+	routers.LoginRouter(g)
 }
