@@ -9,6 +9,7 @@ import (
 	"blog/models"
 	"blog/pkg/connection"
 	"blog/pkg/logger"
+	"blog/pkg/login"
 	"blog/router"
 	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
@@ -30,6 +31,9 @@ func main() {
 	models.AutoMigrateTable()
 
 	g := gin.New()
+
+	g.Use(login.EnableCookieSession())
+
 	g.LoadHTMLGlob("template/*")
 	g.Static("/static", "./static")
 

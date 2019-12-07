@@ -6,6 +6,7 @@ package models
 
 import (
 	"blog/models/blog"
+	"blog/models/user"
 	"blog/pkg/connection"
 )
 
@@ -19,5 +20,10 @@ func AutoMigrateTable() {
 		&blog.Links{},
 		&blog.Series{},
 		&blog.SeriesDetails{},
+		&blog.Comment{},
+		&blog.Reply{},
+
+		// user
+		&user.User{},
 	)
 }

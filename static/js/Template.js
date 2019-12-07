@@ -9,9 +9,6 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
             $("#loading").hide();
         });
 
-        //初始化WOW.js
-        new WOW().init();
-
         //导航点击效果
         $('header nav > ul > li a').click(function () {
             $('header nav > ul > li').removeClass("nav-select-this").find("a").removeClass("nav-a-click");
@@ -103,16 +100,27 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
                 return;
             }
             clearInterval(anim);
-			$('.girl').attr("src", "images/nan.png").css("border-radius", "50px");
-			$('.rd-notice-content').text('欢迎您，渣渣辉！');
-			$('.livechat-girl').css({ right: "0px", bottom: "80px" });
         }
         //登录事件
         function login() {
-            window.location.href = "/toLogin?urls=" + window.location.href;
-			setStyle(true);
+            $.post("/isLogin", {}, function (response) {
+                if (response.data === false) {
+                    window.location.href = "/toLogin?urls=" + window.location.href;
+                    setStyle(true);
+                }
+            })
         }
 
+        // 获取用户信息
+        $(function () {
+            $.post("/userInfo", {}, function (response) {
+                if (response.code === 10000) {
+                    $('.girl').attr("src", response.data.avatar).css("border-radius", "50px");
+                    $('.rd-notice-content').text('欢迎您，' + response.data.nickname + "!");
+                    $('.livechat-girl').css({ right: "0px", bottom: "80px" });
+                }
+            })
+        })
     }
     catch (e) {
         layui.hint().error(e);

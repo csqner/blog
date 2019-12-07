@@ -2,6 +2,7 @@ package routers
 
 import (
 	"blog/handler/blog"
+	"blog/middleware"
 	"fmt"
 	"github.com/gin-gonic/gin"
 )
@@ -24,5 +25,9 @@ func BlogRouter(g *gin.Engine) {
 		blogs.GET("/series_details", blog.SeriesDetailsHandler)
 		blogs.POST("", blog.SaveContentHandler)
 		blogs.GET("/details", blog.ContentDetailsHandler)
+		blogs.POST("/save-comment", middleware.AuthSessionMiddle(), blog.SaveCommentHandler)
+		blogs.POST("/save-reply", middleware.AuthSessionMiddle(), blog.SaveReplyHandler)
+		blogs.GET("/add-awesome", blog.AddAwesomeHandler)
+		blogs.GET("/leave", blog.LeaveHandler)
 	}
 }

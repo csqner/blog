@@ -88,7 +88,7 @@
                 <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/index" style="font-size: 18px; color: #fff;">网站首页</a></li>
                 <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
                 <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
-                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/leave" style="font-size: 16px">网友留言</a></li>
                 <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
                 <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
@@ -132,7 +132,7 @@
 					<p class="container-lead text-muted">每个人都有一个习惯，我的习惯是在这里等你来临。</p>
 				</div>
 				<div class="layui-row layui-col-space30 blog-body">
-					{{ range $index, $value := .content }}
+					{{ range $index, $value := .contentList }}
 						{{ $top := 0 }}
 						{{ if gt $index 2 }}
 							{{ $top = "25px" }}
@@ -163,120 +163,72 @@
 			<!-- Swiper -->
 			<div id="swiper1" class="swiper-container wow zoomIn">
 				<div class="swiper-wrapper">
+					{{ range .commentList }}
 					<div class="swiper-slide">
 						<div class="testimonials-gd-vj">
 							<p class="sub-test">
 								<i class="layui-icon layui-extend-quotation"></i>
-								有时候，耳朵比眼睛还重要，很多东西用耳朵听比用眼睛看好，一个人假装开心，但声音就装不了。细心一听就知道了。
+								{{ .Content }}
 							</p>
 							<div class="user">
 								<a href="#" target="_blank" rel="nofollow">
 									<div>
-										<img class="layui-circle" src="../static/images/nan.png" alt="">
-										<h5 class="layui-elip">潘多拉</h5>
+										<img class="layui-circle" src="{{ .Avatar }}" alt="">
+										<h5 class="layui-elip">{{ .Nickname }}</h5>
 									</div>
 								</a>
 							</div>
 						</div>
 					</div>
-					<div class="swiper-slide">
-						<div class="testimonials-gd-vj">
-							<p class="sub-test">
-								<i class="layui-icon layui-extend-quotation"></i>
-								有时候，耳朵比眼睛还重要，很多东西用耳朵听比用眼睛看好，一个人假装开心，但声音就装不了。细心一听就知道了。
-							</p>
-							<div class="user">
-								<a href="#" target="_blank" rel="nofollow">
-									<div>
-										<img class="layui-circle" src="../static/images/nv.png" alt="">
-										<h5 class="layui-elip">盛秋月</h5>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonials-gd-vj">
-							<p class="sub-test">
-								<i class="layui-icon layui-extend-quotation"></i>
-								有时候，耳朵比眼睛还重要，很多东西用耳朵听比用眼睛看好，一个人假装开心，但声音就装不了。细心一听就知道了。
-							</p>
-							<div class="user">
-								<a href="#" target="_blank" rel="nofollow">
-									<div>
-										<img class="layui-circle" src="../static/images/nan.png" alt="">
-										<h5 class="layui-elip">渣渣辉</h5>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonials-gd-vj">
-							<p class="sub-test">
-								<i class="layui-icon layui-extend-quotation"></i>
-								有时候，耳朵比眼睛还重要，很多东西用耳朵听比用眼睛看好，一个人假装开心，但声音就装不了。细心一听就知道了。
-							</p>
-							<div class="user">
-								<a href="#" target="_blank" rel="nofollow">
-									<div>
-										<img class="layui-circle" src="../static/images/nan.png" alt="">
-										<h5 class="layui-elip">葫芦娃</h5>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonials-gd-vj">
-							<p class="sub-test">
-								<i class="layui-icon layui-extend-quotation"></i>
-								有时候，耳朵比眼睛还重要，很多东西用耳朵听比用眼睛看好，一个人假装开心，但声音就装不了。细心一听就知道了。
-							</p>
-							<div class="user">
-								<a href="#" target="_blank" rel="nofollow">
-									<div>
-										<img class="layui-circle" src="../static/images/nv.png" alt="">
-										<h5 class="layui-elip">沈婷婷</h5>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
+					{{ end }}
 				</div>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>
 			</div>
 		</div>
-		
-		<div id="statistics" class="bg-overlay">
-			<div class="overlay"></div>
-			<div class="row-container wow slideInLeft">
-				<div class="layui-row text-center">
-					<div class="layui-col-md3 layui-col-sm3 layui-col-xs6">
-						<i class="layui-icon layui-extend-dianzan"></i>
-						<h4 id="like-count" class="animateNum" data-animatetarget="2048"></h4>
-						<p>网站点赞数量</p>
+
+		<div class="hot-review py-5">
+			<div class="row-container wow slideInRight">
+				<h3 class="tittle-wthree text-center">热评用户</h3>
+				<div class="layui-row layui-col-space25 bottom-grids text-center">
+					{{ range .commentUser }}
+					<div class="layui-col-md4 layui-col-sm4">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#layui-extend-jiangbei-{{ .Order }}"></use>
+						</svg>
+						<a href="#" target="_blank" rel="nofollow">
+							<img class="layui-circle" src="{{ .Avatar }}" alt="">
+							<h4 class="layui-elip">{{ .Nickname }}</h4>
+						</a>
+						<p>
+							本站评论数：<span class="layui-badge layui-bg-orange">{{ .CommentCount }}</span>
+						</p>
 					</div>
-					<div class="layui-col-md3 layui-col-sm3 layui-col-xs6">
-						<i class="layui-icon layui-icon-dialogue"></i>
-						<h4 id="comment-count" class="animateNum" data-animatetarget="1024"></h4>
-						<p>用户评论数量</p>
-					</div>
-					<div class="layui-col-md3 layui-col-sm3 layui-col-xs6">
-						<i class="layui-icon layui-extend-computer_icon"></i>
-						<h4 id="visit-count" class="animateNum" data-animatetarget="13654"></h4>
-						<p>网站访问次数</p>
-					</div>
-					<div class="layui-col-md3 layui-col-sm3 layui-col-xs6">
-						<i class="layui-icon layui-extend-riqi"></i>
-						<h4 id="working-day" class="animateNum" data-animatetarget="180"></h4>
-						<p>网站运行天数</p>
-					</div>
+					{{ end }}
+					<span class="border-line"></span>
 				</div>
 			</div>
 		</div>
-		
+
+		<div class="visitor">
+			<h3 class="tittle-wthree text-center">近期访客</h3>
+			<!-- Swiper -->
+			<div id="swiper2" class="swiper-container wow flipInX">
+				<div class="swiper-wrapper">
+					{{ range .userInfoList }}
+					<div class="swiper-slide">
+						<a href="#" target="_blank" rel="nofollow">
+							<img class="layui-circle" src="{{ .Avatar }}" alt="">
+							<h4 class="layui-elip">{{ .Nickname }}</h4>
+						</a>
+					</div>
+					{{ end }}
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+
 		<!-- Swiper CSS And JS -->
 		<link href="../static/Eextend/Swiper-4.5.0/css/swiper.min.css" rel="stylesheet" />
 		<script src="../static/Eextend/Swiper-4.5.0/js/swiper.min.js"></script>

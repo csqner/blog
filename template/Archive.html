@@ -88,7 +88,7 @@
                 <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
                 <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
                 <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/archive" style="font-size: 18px; color: #fff;">文章归档</a></li>
-                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/leave" style="font-size: 16px">网友留言</a></li>
                 <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
                 <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
@@ -109,7 +109,7 @@
 					站点统计：
 					<span>{{ .content.TypeCount }} 个分类</span>
 					<span>{{ .content.ArticleCount }} 篇文章</span>
-					<span>52 条评论</span>
+					<span>{{ .content.CommentCount }} 条评论</span>
 					<span>{{ .content.AwesomeCount }} 个赞</span>
 					<span>浏览量：{{ .content.ViewCount }}</span>
 					<span>最后更新：{{ .content.LastUpdateTime.Format "2006-01-02 15:04:05" }}</span>
@@ -158,8 +158,6 @@
 		</div>
 		
 		<script src="../static/js/Archive.js"></script>
-		
-		
 
 		<!-- InstanceEndEditable -->    
     </section>

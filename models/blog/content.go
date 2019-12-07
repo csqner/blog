@@ -39,7 +39,7 @@ type ArchiveData struct {
 	TypeCount      int                 `json:"type_count"`       // 分类总数
 	AwesomeCount   int                 `json:"awesome_count"`    // 总赞数
 	ArticleCount   int                 `json:"article_count"`    // 文章总数
-	CommendCount   int                 `json:"commend_count"`    // 评论总数
+	CommentCount   int                 `json:"commend_count"`    // 评论总数
 	ViewCount      int                 `json:"view_count"`       // 文章总访问量
 	LastUpdateTime utils.JSONTime      `json:"last_update_time"` // 最后更新时间
 	ArticleGroup   []ArticleDataStruct `json:"article_group"`

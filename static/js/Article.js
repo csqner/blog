@@ -12,6 +12,9 @@ function getQueryVariable(variable)
 }
 
 function iniParam() {
+    //初始化WOW.js
+    new WOW().init();
+
     var laypage = layui.laypage;
 
     //页面效果

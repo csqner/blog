@@ -3,6 +3,7 @@ package blog
 import (
 	"blog/models/base"
 	"blog/models/blog"
+	"blog/models/user"
 	"blog/pkg/connection"
 	"blog/pkg/errno"
 	. "blog/pkg/response"
@@ -28,8 +29,60 @@ func IndexHandler(c *gin.Context) {
 		return
 	}
 
+	// 最近留言
+	type UserCommentStruct struct {
+		blog.Comment
+		Nickname string `json:"nickname"`
+		Avatar   string `json:"avatar"`
+	}
+
+	var commentList []UserCommentStruct
+	err = connection.DB.Self.Table("blog_comment").
+		Joins("left join blog_user on blog_comment.user_id = blog_user.id").
+		Select("blog_comment.*, blog_user.nickname, blog_user.avatar").
+		Limit(6).
+		Scan(&commentList).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", err.Error(), "/blog/index")
+		return
+	}
+
+	// 统计评论人员
+	var commentUser []struct {
+		Nickname     string `json:"nickname"`
+		Avatar       string `json:"avatar"`
+		CommentCount int    `json:"comment_count"`
+		Order        int    `json:"order"`
+	}
+	err = connection.DB.Self.Table("blog_comment").
+		Joins("left join blog_user on blog_user.id = blog_comment.user_id").
+		Select("blog_user.nickname, blog_user.avatar, count(*) as comment_count").
+		Order("comment_count desc").
+		Limit(3).
+		Group("user_id").Scan(&commentUser).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", err.Error(), "/blog/index")
+		return
+	}
+	orderValue := 1
+	for index, _ := range commentUser {
+		commentUser[index].Order = orderValue
+		orderValue += 1
+	}
+
+	// 近期访客
+	var userInfoList []user.User
+	err = connection.DB.Self.Model(&user.User{}).Order("created_at desc").Limit(20).Find(&userInfoList).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", err.Error(), "/blog/index")
+		return
+	}
+
 	c.HTML(http.StatusOK, "Index.html", gin.H{
-		"content": contentValueList,
+		"contentList":  contentValueList,
+		"commentList":  commentList,
+		"commentUser":  commentUser,
+		"userInfoList": userInfoList,
 	})
 }
 
@@ -227,6 +280,18 @@ func ContentDetailsHandler(c *gin.Context) {
 		return
 	}
 
+	type replyStruct struct {
+		blog.Reply
+		SUserId    int    `json:"s_user_id"`
+		SNickname  string `json:"s_nickname"`
+		SUserTitle string `json:"s_user_title"`
+		SAvatar    string `json:"s_avatar"`
+		NUserId    int    `json:"n_user_id"`
+		DNickname  string `json:"d_nickname"`
+		DUserTitle string `json:"d_user_title"`
+		DAvatar    string `json:"d_avatar"`
+	}
+
 	var contentTmp blog.Content
 	err := connection.DB.Self.Model(&contentTmp).Where("id = ?", contentId).Find(&contentTmp).Error
 	if err != nil {
@@ -243,7 +308,8 @@ func ContentDetailsHandler(c *gin.Context) {
 
 	type contentModel struct {
 		blog.Content
-		TypeName string `json:"type_name"`
+		TypeName     string `json:"type_name"`
+		CommentCount int    `json:"comment_count"`
 	}
 
 	var content contentModel
@@ -257,8 +323,76 @@ func ContentDetailsHandler(c *gin.Context) {
 		return
 	}
 
+	// 获取用户评论数
+	var aricleCommentIdList []int
+	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ?", contentId).Pluck("id", &aricleCommentIdList).Error
+	if err != nil {
+		Response(c, errno.ErrSelectComment, nil, err.Error())
+		return
+	}
+	content.CommentCount = len(aricleCommentIdList)
+
+	var articleReplyCount int
+	err = connection.DB.Self.Model(&blog.Reply{}).Where("comment_id in (?)", aricleCommentIdList).Count(&articleReplyCount).Error
+	if err != nil {
+		Response(c, errno.ErrSelectComment, nil, err.Error())
+		return
+	}
+
+	content.CommentCount += articleReplyCount
+
+	type commentStruct struct {
+		blog.Comment
+		Nickname  string        `json:"nickname"`
+		UserTitle string        `json:"user_title"`
+		Avatar    string        `json:"avatar"`
+		ReplyList []replyStruct `json:"reply_list"`
+	}
+	var commentList []commentStruct
+	err = connection.DB.Self.Table("blog_comment").
+		Joins("left join blog_user on blog_comment.user_id = blog_user.id").
+		Select("blog_comment.*, blog_user.nickname, blog_user.avatar, blog_user.title as user_title").
+		Where("blog_comment.deleted_at is null and blog_comment.article_id = ?", contentId).
+		Order("created_at desc").
+		Scan(&commentList).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", fmt.Sprintf("获取评论错误，%v", err.Error()), "/blog/list")
+		return
+	}
+
+	var commentIdList []int
+	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ?", contentId).
+		Pluck("id", &commentIdList).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", fmt.Sprintf("获取评论错误，%v", err.Error()), "/blog/list")
+		return
+	}
+
+	// 获取当前文章的所有回复
+	var replyList []replyStruct
+	err = connection.DB.Self.Table("blog_reply").
+		Joins("left join blog_user as s_blog_user on s_blog_user.id = blog_reply.source_user_id").
+		Joins("left join blog_user as d_blog_user on d_blog_user.id = blog_reply.aims_user_id").
+		Select("blog_reply.*, s_blog_user.id as s_user_id, s_blog_user.nickname as s_nickname, s_blog_user.title as s_user_title, s_blog_user.avatar as s_avatar, d_blog_user.id as d_user_id, d_blog_user.nickname as d_nickname, d_blog_user.title as d_user_title, d_blog_user.avatar as d_avatar").
+		Order("created_at").
+		Where("blog_reply.deleted_at is null and blog_reply.comment_id in (?)", commentIdList).
+		Scan(&replyList).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", fmt.Sprintf("获取评论错误，%v", err.Error()), "/blog/list")
+		return
+	}
+
+	for _, reply := range replyList {
+		for commentIndex, comment := range commentList {
+			if reply.CommentId == comment.Id {
+				commentList[commentIndex].ReplyList = append(commentList[commentIndex].ReplyList, reply)
+			}
+		}
+	}
+
 	c.HTML(http.StatusOK, "ArticleDetails.html", gin.H{
 		"content": content,
+		"comment": commentList,
 	})
 }
 
@@ -341,6 +475,20 @@ func ArchiveHandler(c *gin.Context) {
 	}
 
 	// 获取评价总数
+	var commentCount int
+	err = connection.DB.Self.Model(&blog.Comment{}).Count(&commentCount).Error
+	if err != nil {
+		Response(c, errno.ErrSelectComment, nil, err.Error())
+		return
+	}
+	var replyCount int
+	err = connection.DB.Self.Model(&blog.Reply{}).Count(&replyCount).Error
+	if err != nil {
+		Response(c, errno.ErrSelectComment, nil, err.Error())
+		return
+	}
+	commentCount += replyCount
+	ArchiveDataList.CommentCount = commentCount
 
 	// 获取赞的总数
 	var awesomeCount struct {
@@ -441,4 +589,30 @@ func LinksHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "FriendlyLink.html", gin.H{
 		"links": linksList,
 	})
+}
+
+func AddAwesomeHandler(c *gin.Context) {
+	contentId := c.DefaultQuery("content_id", "")
+	if contentId == "" {
+		Response(c, errno.ErrBind, nil, "参数不正确")
+		return
+	}
+
+	// 查询原来的赞
+	var contentValue blog.Content
+	err := connection.DB.Self.Model(&contentValue).Where("id = ?", contentId).Find(&contentValue).Error
+	if err != nil {
+		Response(c, errno.ErrSelectDetails, nil, err.Error())
+		return
+	}
+
+	// 更新赞的数量
+	err = connection.DB.Self.Model(&blog.Content{}).Where("id = ?", contentId).
+		Update("awesome", contentValue.Awesome+1).Error
+	if err != nil {
+		Response(c, errno.ErrUpdateAwesome, nil, err.Error())
+		return
+	}
+
+	Response(c, nil, nil, "")
 }

@@ -1,6 +1,9 @@
 // JavaScript Document
 
 function iniParam() {
+    //初始化WOW.js
+    new WOW().init();
+
     var device = layui.device();
    
     //页面效果

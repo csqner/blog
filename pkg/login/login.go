@@ -1,8 +1,10 @@
 package login
 
 import (
-	"blog/handler/blog"
+	"blog/models/user"
+	"blog/pkg/connection"
 	"blog/pkg/logger"
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -63,6 +65,52 @@ func GetUserInfo(info *PrivateInfo, c *gin.Context) {
 			return
 		}
 	}()
+
+	userInfo, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		logger.Error(err)
+		return
+	}
+
+	userMap := make(map[string]interface{})
+	err = json.Unmarshal(userInfo, &userMap)
+	if err != nil {
+		logger.Error(err)
+		return
+	}
+
+	// 1. 查询OpenId是否存在
+	var userCount int
+	err = connection.DB.Self.Model(&user.User{}).Where("open_id = ?", info.OpenId).Count(&userCount).Error
+	if err != nil {
+		logger.Errorf("查询OpenId失败，错误：%v", err)
+		return
+	}
+
+	userData := user.User{
+		OpenId:   info.OpenId,
+		Nickname: userMap["nickname"].(string),
+		Avatar:   userMap["figureurl_qq"].(string),
+	}
+
+	if userCount > 0 {
+		// 更新数据
+		err = connection.DB.Self.Model(&user.User{}).Where("open_id = ?", info.OpenId).Updates(userData).Error
+		if err != nil {
+			logger.Errorf("更新用户数据失败，错误：%v", err)
+			return
+		}
+	} else {
+		// 写入数据
+		err = connection.DB.Self.Model(&user.User{}).Create(&userData).Error
+		if err != nil {
+			logger.Errorf("创建用户数据失败，错误：%v", err)
+			return
+		}
+	}
+
+	// 写入Session
+	SaveAuthSession(c, info.OpenId)
 
 	c.Redirect(http.StatusMovedPermanently, "/")
 }

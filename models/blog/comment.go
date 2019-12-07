@@ -8,14 +8,13 @@ import "blog/models/base"
 
 type Comment struct {
 	base.Model
-	Title        string `gorm:"column:title;type:varchar(512)" json:"title" form:"title"`
-	Introduction string `grom:"column:introduction;type:varchar(1024)" json:"introduction" form:"introduction"`
-	Type         int    `gorm:"column:type_id;type:int(11)" json:"type_id" form:"type_id"`
-	Content      string `gorm:"column:content;type:longtext" json:"content" form:"content"`
-	Awesome      int    `gorm:"column:awesome;int(11)" json:"awesome" form:"awesome"`  //  赞
-	View         int    `gorm:"column:view;int(11);default:0" json:"view" form:"view"` // 访问量
+	ArticleId int    `gorm:"column:article_id;type:int(11)" json:"article_id" form:"article_id"`
+	Type      int    `gorm:"column:type;type:int(11)" json:"type" form:"type"` // 文章类型，博客文章 1， 系列文章 2， 留言数据，3
+	UserId    int    `gorm:"column:user_id;type:int(11)" json:"user_id" form:"user_id"`
+	Content   string `gorm:"column:content;type:varchar(1024)" json:"content" form:"content"`
+	Browser   string `gorm:"column:browser;type:varchar(512)" json:"browser" form:"browser"`
 }
 
 func (Comment) TableName() string {
-	return "blog_content"
+	return "blog_comment"
 }

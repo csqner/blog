@@ -1,8 +1,12 @@
 package blog
 
 import (
+	"blog/models/user"
+	"blog/pkg/connection"
+	"blog/pkg/errno"
 	"blog/pkg/logger"
 	"blog/pkg/login"
+	. "blog/pkg/response"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -59,4 +63,27 @@ func CallbackHandler(c *gin.Context) {
 	info.ExpiresIn = resultMap["expires_in"]
 
 	login.GetOpenId(info, c)
+}
+
+// 获取用户数据
+func UserInfoHandler(c *gin.Context) {
+	var userInfo user.User
+	if login.HasSession(c) {
+		openId := login.GetSessionOpenId(c)
+		err := connection.DB.Self.Model(&user.User{}).Where("open_id = ?", openId).Find(&userInfo).Error
+		if err != nil {
+			Response(c, errno.ErrSelectUser, nil, err.Error())
+			return
+		}
+	} else {
+		Response(c, errno.ErrNotLogin, nil, "")
+		return
+	}
+	Response(c, nil, userInfo, "")
+}
+
+// 判断账号是否登陆
+func IsLoginHandler(c *gin.Context) {
+	loginStatus := login.HasSession(c)
+	Response(c, nil, loginStatus, "")
 }

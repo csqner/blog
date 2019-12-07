@@ -88,7 +88,7 @@
                 <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
                 <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
                 <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
-                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/leave" style="font-size: 16px">网友留言</a></li>
                 <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
                 <li style="border-bottom: 4px solid #5FB878 !important;"><a href="/blog/about" style="font-size: 18px; color: #ffffff">关于本站</a></li>
             </ul>
@@ -115,7 +115,7 @@
 				<a href="/blog/links"><div class='side bg-03'><span class='side-content'>友情链接</span></div></a>
 			</div>
 			<div class='box'>
-				<a href="MessageBoard.html"><div class='side bg-04'><span class='side-content'>网站留言</span></div></a>
+				<a href="/blog/leave"><div class='side bg-04'><span class='side-content'>网站留言</span></div></a>
 			</div>
 		</div>
 		
@@ -148,7 +148,7 @@
 							<p>其实这套系统也差点被我放弃，重新使用wordPress来作为我的博客系统了，毕竟它真的很方便，有完整的后台系统，但是说实话，它的后台系统是真的烂啊，很多东西都需要翻墙，甚至如果不去掉Google的字体的话，还会非常的慢，而且，我发现它的网站在国内竟然上不去了，我就果断的放弃了它。</p>
 							<h1>开发环境：</h1>
 							<p>本博客网站前端使用layui实现，接入第三方登陆，一些需要登陆才能操作的动作，不需要额外的去注册，后端使用Golang+Gin+Gorm实现，数据的存储采用的MySQL。</p>
-							<p>非常感谢你的访问，若是在浏览过程中遇到问题或者Bug，欢迎留言告。</p>
+							<p>非常感谢你的访问，若是在浏览过程中遇到问题或者Bug，欢迎留言告知。</p>
 						</div>
 					</fieldset>
 				</div>
@@ -161,6 +161,8 @@
 			function iniParam (){
 				console.log("社会你磊哥，人很话不多");
 			}
+			//初始化WOW.js
+			new WOW().init();
 		</script>
 		
 		<!-- InstanceEndEditable -->    

@@ -12,6 +12,7 @@ require (
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gin-contrib/cors v1.3.0
 	github.com/gin-contrib/pprof v1.2.0
+	github.com/gin-contrib/sessions v0.0.1
 	github.com/gin-gonic/gin v1.4.0
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/jinzhu/gorm v1.9.10

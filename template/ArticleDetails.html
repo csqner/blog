@@ -91,7 +91,7 @@
                 <li><a href="/blog/index" style="font-size: 16px">网站首页</a></li>
                 <li><a href="/blog/list" style="font-size: 16px">文章列表</a></li>
                 <li><a href="/blog/archive" style="font-size: 16px">文章归档</a></li>
-                <li><a href="MessageBoard.html" style="font-size: 16px">网友留言</a></li>
+                <li><a href="/blog/leave" style="font-size: 16px">网友留言</a></li>
                 <li><a href="/blog/series" style="font-size: 16px">系列文章</a></li>
                 <li><a href="/blog/about" style="font-size: 16px">关于本站</a></li>
             </ul>
@@ -121,7 +121,7 @@
 					<span id="click_count_text">{{ .content.View }}</span>
 					<a href="#am_comment">
 						<i class="layui-icon layui-icon-dialogue"></i>
-						<span id="comment_count_text">10条</span>
+						<span id="comment_count_text">{{ .content.CommentCount }}条</span>
 					</a>
 					<a href="#am_praise">
 						<i class="layui-icon layui-extend-dianzan"></i>
@@ -138,7 +138,7 @@
 					<div class="praise">
 						<span id="am_praise" class="target-fix">暗锚,解决锚点偏移</span>
 						<p>若喜欢，就赞一下吧，你的鼓励是我最大的动力</p>
-						<button id="btnLike" type="button" class="layui-btn">LIKE&nbsp;|&nbsp; <span class="like_count_text">8</span>
+						<button id="btnLike" onclick="addAwesome({{ .content.Id }})" type="button" class="layui-btn">LIKE&nbsp;|&nbsp; <span class="like_count_text">{{ .content.Awesome }}</span>
 						</button>
 					</div>
 					<hr>
@@ -154,187 +154,89 @@
 				<h2 class="side-title">文章评论</h2>
 				<form class="layui-form blog-editor" lay-filter="formComment">
 					<div class="layui-form-item">
-						<textarea style="resize: none;" name="content" placeholder="请输入评论内容" class="layui-textarea"></textarea>
+						<textarea style="resize: none;" name="content" placeholder="请输入评论内容" class="layui-textarea blog-aricle-comment"></textarea>
 					</div>
 					<div class="layui-form-item">
-						<button type="button" class="layui-btn" lay-submit lay-filter="formComment">提交留言</button>
+						<button type="button" class="layui-btn" onclick="aricleComment({{ .content.Id }})" lay-submit lay-filter="formComment">提交评论</button>
 					</div>
 				</form>
 				<!-- 评论列表 -->
 				<ul class="blog-comment">
+					{{ range .comment }}
+					{{ $CommentId := .Id }}
 					<li>
 						<div class="comment-parent">
-							<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
+							<a href="http://fdevops.com"><img src="{{ .Avatar }}" alt="" /></a>
 							<div class="info">
-								<span class="username"><a href="http://fdevops.com">Lonely</a></span>
-								<span class="layui-badge layui-bg-orange">博主</span>
+								<span class="username"><a href="http://fdevops.com">{{ .Nickname }}</a></span>
+								{{ if ne .UserTitle "" }}
+									<span class="layui-badge layui-bg-orange">
+										{{ .UserTitle }}
+									</span>
+								{{ end }}
 							</div>
 							<div class="content comment-text">
-								Hello World!
+								{{ .Content }}
 							</div>
 							<p class="info info-footer">
 								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
+									<i class="layui-icon layui-icon-log"></i>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}
 								</span>
 								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
+									<i class="layui-icon layui-extend-liulanqi"></i>{{ .Browser }}
 								</span>
 								<a class="btn-reply" href="javascript:;">回复</a>
 							</p>
 							<div class="replycontainer layui-hide">
 								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-2" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
+									 <textarea style="resize: none;" name="content" placeholder="请输入评论内容" id="comment-{{ .Id }}" class="layui-textarea"></textarea>
+									<button type="button" class="layui-btn layui-btn-sm" onclick="addReply({{ .Id }}, {{ $CommentId }}, {{ .UserId }}, 'comment')" lay-submit lay-filter="formReply">提交</button>
 								</form>
 							</div>
 						</div>
 						<hr />
+						{{ range .ReplyList }}
 						<div class="comment-child">
-							<a href="http://fdevops.com"><img src="../static/images/nv.png" alt="" /></a>
+							<a href="http://fdevops.com"><img src="{{ .SAvatar }}" alt="" /></a>
 							<div class="info">
-								<span class="username"><a href="http://fdevops.com">王多鱼</a></span>
-								<span>回复<a href="http://fdevops.com" class="to-username">@Lonely</a>：</span>
-								<span class="comment-text">不装了摊牌了，这个项目我投了</span>
+								<span class="username"><a href="http://fdevops.com">{{ .SNickname }}</a></span>
+								{{ if ne .SUserTitle "" }}
+									<span class="layui-badge layui-bg-orange">
+										{{ .SUserTitle }}
+									</span>
+								{{ end }}
+								<span>回复<a href="http://fdevops.com" class="to-username">@{{ .DNickname }}</a>：</span>
+								{{ if ne .DUserTitle "" }}
+									<span class="layui-badge layui-bg-orange">
+										{{ .DUserTitle }}
+									</span>
+								{{ end }}
+								<span class="comment-text">{{ .Content }}</span>
 							</div>
 							<p class="info">
 								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
+									<i class="layui-icon layui-icon-log"></i>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}
 								</span>
 								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
+									<i class="layui-icon layui-extend-liulanqi"></i>{{ .Browser }}
 								</span>
 								<a class="btn-reply" href="javascript:;">回复</a>
 							</p>
 							<div class="replycontainer layui-hide">
 								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-3" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
+									 <textarea id="reply-{{ .Id }}" style="resize: none;" name="content" placeholder="请输入评论内容" class="layui-textarea"></textarea>
+									 <button type="button" onclick="addReply({{ .Id }}, {{ $CommentId }}, {{ .SUserId }}, 'reply')" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
 								</form>
 							</div>
 						</div>
-						<div class="comment-child">
-							<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
-							<div class="info">
-								<span class="username"><a href="http://fdevops.com">Lonely</a></span>
-								<span class="layui-badge layui-bg-orange">博主</span>
-								<span>回复<a href="http://fdevops.com" class="to-username">@王多鱼</a>：</span>
-								<span class="comment-text">谢谢王总</span>
-							</div>
-							<p class="info">
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
-								</span>
-								<a class="btn-reply" href="javascript:;">回复</a>
-							</p>
-							<div class="replycontainer layui-hide">
-								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-4" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
-								</form>
-							</div>
-						</div>
-
+						{{ end }}
 					</li>
-					 <li>
-						<div class="comment-parent">
-							<a href="http://fdevops.com"><img src="../static/images/img02.jpg" alt="" /></a>
-							<div class="info">
-								<span class="username"><a href="http://fdevops.com">王思聪</a></span>
-							</div>
-							<div class="content comment-text">
-								我出十个亿，这个项目我投了，明天过来签合同
-							</div>
-							<p class="info info-footer">
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
-								</span>
-								<a class="btn-reply" href="javascript:;">回复</a>
-							</p>
-							<div class="replycontainer layui-hide">
-								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-5" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
-								</form>
-							</div>
-						</div>
-						<hr />
-						<div class="comment-child">
-							<a href="http://fdevops.com"><img src="../static/images/nan.png" alt="" /></a>
-							<div class="info">
-								<span class="username"><a href="http://fdevops.com">Lonely</a></span>
-								<span class="layui-badge layui-bg-orange">博主</span>
-								<span>回复<a href="http://fdevops.com" class="to-username">@王思聪</a>：</span>
-								<span class="comment-text">王总，什么钱不钱的不是问题，主要就是我比较喜欢跟您合作</span>
-							</div>
-							<p class="info">
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
-								</span>
-								<a class="btn-reply" href="javascript:;">回复</a>
-							</p>
-							<div class="replycontainer layui-hide">
-								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-6" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
-								</form>
-							</div>
-						</div>
-						<div class="comment-child">
-							<a href="http://fdevops.com"><img src="../static/images/nv.png" alt="" /></a>
-							<div class="info">
-								<span class="username"><a href="http://fdevops.com">王多鱼</a></span>
-								<span>回复<a href="http://fdevops.com" class="to-username">@王思聪</a>：</span>
-								<span class="comment-text">小样，跟我王多鱼争项目是不？</span>
-							</div>
-							<p class="info">
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-log"></i>2019-07-27 17:44:21
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-icon-location"></i>西虹市 移通
-								</span>
-								<span class="aux-word">
-									<i class="layui-icon layui-extend-liulanqi"></i>Chrome 75.0
-								</span>
-								<a class="btn-reply" href="javascript:;">回复</a>
-							</p>
-							 <div class="replycontainer layui-hide">
-								 <form class="layui-form blog-editor" lay-filter="formReply">
-									<textarea name="content" id="demo-7" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-									<button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
-								</form>
-							</div>
-						</div>
-					</li>
+					{{ end }}
 				</ul>
-				<div id="page"></div>
+				{{/*<div id="page"></div>*/}}
 			</div>
 		</div>
-		
+
 		<script src="../static/js/ArticleDetails.js"></script>
 		<!-- InstanceEndEditable -->    
     </section>
@@ -342,7 +244,7 @@
      <p><a href="http://fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
-        <div class="livechat-girl animated">
+        <div class="livechat-girl animated" onclick="login()">
           <img class="girl" src="../static/images/a.png" oncontextmenu="return false;" ondragstart="return false;">
             <div class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
                 <div class="rd-notice-content">嘿，来试试登录吧！</div>

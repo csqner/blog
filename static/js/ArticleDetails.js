@@ -2,26 +2,24 @@
 
 function iniParam() {
     var form = layui.form,laypage = layui.laypage,layedit = layui.layedit;
-	
+
  	layer.photos({
 		photos: '#details-content',
 		anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
-	});   
-	
-	
+	});
+
 	//评论和留言的编辑器
-	for(var i=1;i<9;i++){
+	for(var i=0;i<9;i++){
 		layedit.build('demo-'+i.toString(), {
 			height: 150,
 			tool: ['face', '|', 'link'],
 		});
 	}
-	
 
 	$(".btn-reply").click(function(){
-		 if ($(this).text() == '回复') {
+		if ($(this).text() === '回复') {
        		$(this).parent().next().removeClass("layui-hide");
-        	$('.btn-reply').text('回复');
+        	$(this).text('回复');
 		    $(this).text('收起');
 		}
 		else {
@@ -46,23 +44,88 @@ function iniParam() {
 			}
 		}
 	});
-
-	//我用的百度编辑器，按照你们自己需求改
-	CodeHighlighting(); //代码高亮
-    function CodeHighlighting() {
-        //添加code标签
-        var allPre = document.getElementsByTagName("pre");
-        for (i = 0; i < allPre.length; i++) {
-            var onePre = document.getElementsByTagName("pre")[i];
-            var myCode = document.getElementsByTagName("pre")[i].innerHTML;
-            onePre.innerHTML = '<div class="pre-title">Code</div><code class="' + onePre.className.substring((onePre.className.indexOf(":") + 1), onePre.className.indexOf(";")) + '">' + myCode + '</code>';
-        }
-        //添加行号
-        $("code").each(function () {
-            $(this).html("<ol><li>" + $(this).html().replace(/\n/g, "\n</li><li>") + "\n</li></ol>");
-        });
-		hljs.initHighlighting(); //对页面上的所有块应用突出显示
-        //hljs.initHighlightingOnLoad(); //页面加载时执行代码高亮
-    }
 }
 
+function getBrowser() {
+	var explorer =navigator.userAgent ;
+	var browser = "";
+	if (explorer.indexOf("MSIE") >= 0) {
+		browser = "IE"
+	} else if (explorer.indexOf("Firefox") >= 0) {
+		browser = "Firefox"
+	} else if(explorer.indexOf("Chrome") >= 0){
+		browser = "Chrome"
+	} else if(explorer.indexOf("Opera") >= 0){
+		browser = "Opera"
+	} else if(explorer.indexOf("Safari") >= 0){
+		browser = "Safari"
+	} else if(explorer.indexOf("Netscape")>= 0) {
+		browser = "Netscape"
+	} else {
+		browser = "其他浏览器"
+	}
+	return browser
+}
+
+function aricleComment(aricleId) {
+	var commentValue = $(".blog-aricle-comment").val()
+	if (commentValue !== "") {
+		var jsonData = {
+			article_id: aricleId,
+			type: 1,
+			content: commentValue,
+			browser: getBrowser()
+		}
+
+		$.post("/blog/save-comment", jsonData, function (response) {
+			console.log(response)
+			if (response.code === 60002) {
+				layer.msg("评论需登陆，请点击右下角哆啦A梦登陆")
+			} else if (response.code === 10000) {
+				window.location.reload()
+			} else {
+				layer.msg(response.message)
+			}
+		})
+	} else {
+		layer.msg("评论内容不能为空！");
+	}
+}
+
+function addAwesome(content_id) {
+	$.get("/blog/add-awesome", {
+		content_id: content_id
+	}, function (response) {
+		if (response.code === 60002) {
+			layer.msg("评论需登陆，请点击右下角哆啦A梦登陆")
+		} else if (response.code === 10000) {
+			window.location.reload()
+		} else {
+			layer.msg(response.message)
+		}
+	})
+}
+
+function addReply(replyId, commentId, aimsUserId, idKey) {
+	var replyValue = $("#" + idKey + "-" + replyId).val()
+	if (replyValue !== "") {
+		var jsonData = {
+			comment_id: commentId,
+			type: 1,
+			aims_user_id: aimsUserId,
+			content: replyValue,
+			browser: getBrowser()
+		}
+		$.post("/blog/save-reply", jsonData, function (response) {
+			if (response.code === 60002) {
+				layer.msg("评论需登陆，请点击右下角哆啦A梦登陆")
+			} else if (response.code === 10000) {
+				window.location.reload()
+			} else {
+				layer.msg(response.message)
+			}
+		})
+	} else {
+		layer.msg("回复内容不能为空！");
+	}
+}
