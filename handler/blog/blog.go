@@ -390,9 +390,45 @@ func ContentDetailsHandler(c *gin.Context) {
 		}
 	}
 
+	// 获取上一篇文章
+	var onContentCount int
+	err = connection.DB.Self.Model(&blog.Content{}).Where("id > ?", contentId).Limit(1).Count(&onContentCount).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", fmt.Sprintf("获取上文失败，%v", err.Error()), "/blog/list")
+		return
+	}
+
+	var onContent blog.Content
+	if onContentCount > 0 {
+		err := connection.DB.Self.Model(&blog.Content{}).Where("id > ?", contentId).Limit(1).Find(&onContent).Error
+		if err != nil {
+			HtmlResponse(c, "error.html", fmt.Sprintf("获取上文失败，%v", err.Error()), "/blog/list")
+			return
+		}
+	}
+
+	// 获取下一篇文章
+	var underContentCount int
+	err = connection.DB.Self.Model(&blog.Content{}).Where("id < ?", contentId).Limit(1).Count(&underContentCount).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", fmt.Sprintf("获取下文失败，%v", err.Error()), "/blog/list")
+		return
+	}
+
+	var underContent blog.Content
+	if underContentCount > 0 {
+		err := connection.DB.Self.Model(&blog.Content{}).Where("id < ?", contentId).Limit(1).Find(&underContent).Error
+		if err != nil {
+			HtmlResponse(c, "error.html", fmt.Sprintf("获取上文失败，%v", err.Error()), "/blog/list")
+			return
+		}
+	}
+
 	c.HTML(http.StatusOK, "ArticleDetails.html", gin.H{
-		"content": content,
-		"comment": commentList,
+		"content":      content,
+		"comment":      commentList,
+		"onContent":    onContent,
+		"underContent": underContent,
 	})
 }
 

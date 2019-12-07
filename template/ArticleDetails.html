@@ -143,10 +143,12 @@
 					</div>
 					<hr>
 					<h3 class="h3_class">温馨提示：本站所有文章，若非特别声明，均为原创，转载请注明作者及原文链接。</h3>
-					<p>上一篇：<a target="_blank" href="#">Mr. Lan v2.0 开源啦</a>
-					</p>
-					<p>下一篇：<a target="_blank" href="htpp://www.qbl.link/Web/Home/ArticleDetails/6b71489e-1a3d-4d3b-8027-e1f21d7e5237.html">Mr. Lan v1.0上线啦</a>
-					</p>
+					{{ if ne .onContent.Title "" }}
+					<p>上一篇：<a target="_blank" href="/blog/details?content_id={{ .onContent.Id }}">{{ .onContent.Title }}</a></p>
+					{{ end }}
+					{{ if ne .underContent.Title "" }}
+					<p>下一篇：<a target="_blank" href="/blog/details?content_id={{ .underContent.Id }}">{{ .underContent.Title }}</a></p>
+					{{ end }}
 				</div>
 			</div>
 			<div class="card comment">

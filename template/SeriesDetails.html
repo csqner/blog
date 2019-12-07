@@ -98,16 +98,6 @@
 
     --你好，世界！生活，从敲的第一行代码开始。
 -->
-{{/*<div id="loading">*/}}
-{{/*    <div id="loading-center">*/}}
-{{/*        <div id="loading-center-absolute">*/}}
-{{/*            <div class="object" id="object_four"></div>*/}}
-{{/*            <div class="object" id="object_three"></div>*/}}
-{{/*            <div class="object" id="object_two"></div>*/}}
-{{/*            <div class="object" id="object_one"></div>*/}}
-{{/*        </div>*/}}
-{{/*    </div>*/}}
-{{/*</div>*/}}
 <header>
     <nav>
         <div class="logo">
@@ -147,11 +137,6 @@
                         <a href="{{ $Identify }}" title="{{ $BookName }}" class="book-title">{{ $BookName }}</a>
                         <span style="font-size: 12px;font-weight: 100;"></span>
                     </div>
-                    <div class="navbar-header pull-right manual-menu">
-                        <div class="bookstack-item">
-                            <a title="下载" href="javascript:" data-toggle="modal" data-target="#ModalDownload" class="btn btn-light"><i class="fa fa-cloud-download"></i> 下载</a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="container-fluid manual-body">
@@ -169,7 +154,7 @@
                         </div>
                         <div class="article-content">
                             <div class="help-block article-info" style="padding-bottom: 20px;">
-                                <span><i class="fa fa-user-o"></i> <a target="_blank" title="来源" href="">来源 Mr. Lan</a></span>
+                                <span><i class="fa fa-user-o"></i> 来源 Mr. Lan</span>
                                 <span><i class="fa fa-eye"></i> 浏览 <i class="read-count">1000</i></span>
                                 <span class="hidden-xs"><a href="#" data-target="#ModalQRcode" data-toggle="modal"><i class="fa fa-qrcode"></i> 扫码</a></span>
                                 <span><a href="#" data-target="#ModalShare" data-toggle="modal"><i class="fa fa-share-alt"></i> 分享</a></span>
@@ -204,9 +189,6 @@
                                 <ul>
 
                                     <li class="visible-xs visible-sm bars-menu bars-menu-hide"><a href="/" title="首页"><i class="fa fa-home"></i></a></li>
-                                    <li class="visible-xs visible-sm bars-menu bars-menu-hide">
-                                        <a title="下载" href="javascript:" data-toggle="modal" data-target="#ModalDownload"><i class="fa fa-cloud-download"></i></a>
-                                    </li>
                                     <li class="visible-xs visible-sm bars-menu bars-menu-hide">
                                         <a title="分享" href="javascript:" data-toggle="modal" data-target="#ModalShare"><i class="fa fa-share-alt"></i></a>
                                     </li>
@@ -292,6 +274,8 @@
     {{/*<script src="/static/tree/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>*/}}
     <script src="/static/tree/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
+{{template "share.html" .}}
+{{template "qrcode.html" .}}
 
     <script type="text/javascript" src="/static/tree/nprogress/nprogress.js"></script>
     <script type="text/javascript" src="/static/tree/highlight/highlight.js"></script>
