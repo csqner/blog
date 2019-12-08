@@ -47,9 +47,9 @@ func GetDocumentTree(array []blog.Tree, buf *bytes.Buffer, args ...interface{}) 
 
 		buf.WriteString("<li>")
 		if detailsId == item.Id {
-			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=9&details_id=%v' style='color: #1E9FFF' title='%s'>%s</a>", item.Id, item.Text, item.Text))
+			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=%v&details_id=%v' style='color: #1E9FFF' title='%s'>%s</a>", args[2], item.Id, item.Text, item.Text))
 		} else {
-			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=9&details_id=%v' title='%s'>%s</a>", item.Id, item.Text, item.Text))
+			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=%v&details_id=%v' title='%s'>%s</a>", args[2], item.Id, item.Text, item.Text))
 		}
 
 		if len(item.Nodes) > 0 {

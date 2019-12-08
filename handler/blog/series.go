@@ -75,7 +75,7 @@ func SeriesDetailsHandler(c *gin.Context) {
 		"onContent":    onDetailsValue,
 		"underContent": underDetailsValue,
 	}
-	tree.GetDocumentTree(treeValue, buf, detailsIdInt, onAndunder)
+	tree.GetDocumentTree(treeValue, buf, detailsIdInt, onAndunder, seriesId)
 
 	// 文档信息
 	var seriesValue blog.Series

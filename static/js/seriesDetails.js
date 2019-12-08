@@ -25,7 +25,7 @@ function getQueryVariable(variable) {
 function searchTitleValue() {
     var series_id = getQueryVariable("series_id")
     if (series_id !== false) {
-        window.location.href = "/blog/series_details?series_id=9&searchValue=" + $("#searchInputValue").val();
+        window.location.href = "/blog/series_details?series_id= "+ series_id +" &searchValue=" + $("#searchInputValue").val();
     }
 }
 
