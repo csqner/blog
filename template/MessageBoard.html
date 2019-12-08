@@ -23,7 +23,7 @@
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
 	<meta property="og:site_name" content="www.fdevops.com" />
 	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
 	<link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
@@ -146,9 +146,9 @@
                             {{ $CommentId := .Id }}
                             <li>
                                 <div class="comment-parent">
-                                    <a href="http://fdevops.com"><img src="{{ .Avatar }}" alt="" /></a>
+                                    <a><img src="{{ .Avatar }}" alt="" /></a>
                                     <div class="info">
-                                        <span class="username"><a href="http://fdevops.com">{{ .Nickname }}</a></span>
+                                        <span class="username"><a>{{ .Nickname }}</a></span>
                                         {{ if ne .UserTitle "" }}
                                             <span class="layui-badge layui-bg-orange">
 										{{ .UserTitle }}
@@ -177,15 +177,15 @@
                                 <hr />
                                 {{ range .ReplyList }}
                                     <div class="comment-child">
-                                        <a href="http://fdevops.com"><img src="{{ .SAvatar }}" alt="" /></a>
+                                        <a><img src="{{ .SAvatar }}" alt="" /></a>
                                         <div class="info">
-                                            <span class="username"><a href="http://fdevops.com">{{ .SNickname }}</a></span>
+                                            <span class="username"><a>{{ .SNickname }}</a></span>
                                             {{ if ne .SUserTitle "" }}
                                                 <span class="layui-badge layui-bg-orange">
 										{{ .SUserTitle }}
 									</span>
                                             {{ end }}
-                                            <span>回复<a href="http://fdevops.com" class="to-username">@{{ .DNickname }}</a>：</span>
+                                            <span>回复<a class="to-username">@{{ .DNickname }}</a>：</span>
                                             {{ if ne .DUserTitle "" }}
                                                 <span class="layui-badge layui-bg-orange">
 										{{ .DUserTitle }}

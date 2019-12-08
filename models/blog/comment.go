@@ -18,3 +18,11 @@ type Comment struct {
 func (Comment) TableName() string {
 	return "blog_comment"
 }
+
+type CommentStruct struct {
+	Comment
+	Nickname  string        `json:"nickname"`
+	UserTitle string        `json:"user_title"`
+	Avatar    string        `json:"avatar"`
+	ReplyList []ReplyStruct `json:"reply_list"`
+}

@@ -4,27 +4,17 @@
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <head>
-    {{ $SeoTitle := "Python基础到高级" }}
-    {{ $SeoKeywords := "Python,Django" }}
-    {{ $SeoDescription := "这是一个从Python初级到高级的过程" }}
-    {{ $BookName := "Python基础到高级" }}
-    {{ $Identify := "http://baidu.com" }}
-    {{ $Wxacode := true }}
-    {{ $BookId := 1 }}
-    {{ $DocId := 10 }}
-    {{ $Bookmark := "测试" }}
-    {{ $Title := "关于" }}
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Window-target" content="_top">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Mr. Lan</title>
+    <title>Mr. Lan - {{ .seriesValue.Title }}</title>
     <!-- InstanceEndEditable -->
     <meta name="Author" contect="Mr. Lan">
     <meta name="Copyright" content="Mr. Lan">
-    <meta name="keywords" content="个人博客,Mr. Lan" />
+    <meta name="keywords" content="个人博客,Mr. Lan,Python,Golang" />
     <meta name="description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
     <meta property="og:title" content="Mr. Lan" />
     <meta property="og:title" content="Mr. Lan 网站首页" />
@@ -33,7 +23,7 @@
     <meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
     <meta property="og:site_name" content="www.fdevops.com" />
     <meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
     <link href="../static/css/loading.css" rel="stylesheet" />
     <link href="../static/css/scroll-bar.css" rel="stylesheet" />
     <link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
@@ -134,7 +124,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header pull-left manual-title">
                         <span class="slidebar" id="slidebar"><i class="fa fa-align-justify"></i></span>
-                        <a href="{{ $Identify }}" title="{{ $BookName }}" class="book-title">{{ $BookName }}</a>
+                        <a href="/blog/series_details?series_id={{ .seriesValue.Id }}" title="{{ .seriesValue.Title }}" class="book-title">{{ .seriesValue.Title }}</a>
                         <span style="font-size: 12px;font-weight: 100;"></span>
                     </div>
                 </div>
@@ -147,7 +137,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                                        <h1 id="article-title">{{ $Title }}</h1>
+                                        <h1 id="article-title">{{ .seriesDetailsValue.Title }}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -155,31 +145,115 @@
                         <div class="article-content">
                             <div class="help-block article-info" style="padding-bottom: 20px;">
                                 <span><i class="fa fa-user-o"></i> 来源 Mr. Lan</span>
-                                <span><i class="fa fa-eye"></i> 浏览 <i class="read-count">1000</i></span>
-                                <span class="hidden-xs"><a href="#" data-target="#ModalQRcode" data-toggle="modal"><i class="fa fa-qrcode"></i> 扫码</a></span>
-                                <span><a href="#" data-target="#ModalShare" data-toggle="modal"><i class="fa fa-share-alt"></i> 分享</a></span>
-                                <span class="pull-right hidden-xs tooltips" title="更新时间"><i class="fa fa-clock-o"></i> <i class="updated-at">2019-05-05 15:04:05</i></span>
+                                <span><i class="fa fa-eye"></i> 浏览 <i class="read-count">{{ .seriesDetailsValue.View }}</i></span>
+                                <span class="hidden-xs"><a data-target="#ModalQRcode" data-toggle="modal"><i class="fa fa-qrcode"></i> 扫码</a></span>
+                                <span><a data-target="#ModalShare" data-toggle="modal"><i class="fa fa-share-alt"></i> 分享</a></span>
+                                <span class="pull-right hidden-xs tooltips" title="更新时间"><i class="fa fa-clock-o"></i>
+                                    <i class="updated-at">{{ .seriesDetailsValue.UpdatedAt.Format "2006-01-02 15:04:05" }}</i>
+                                </span>
                             </div>
-                            {{if true}}
-                                <div class="ap ap-content-top mgb-15px">
-                                    测试
+
+                            <div id="details-content" class="details-content">
+                                <textarea style="display:none;">{{ .seriesDetailsValue.Content }}</textarea>
+                            </div>
+
+                            <div class="row" style="margin: 20px 0 20px 0">
+                                <div class="col-xs-12 hung-pre" style="padding-left: 0; padding-right: 0; margin-bottom: 13px">
+                                    {{ if ne .onDetailsValue.Id 0 }}
+                                    <span class="text-muted">上一篇:</span><a href="/blog/series_details?series_id={{ .seriesDetailsValue.Parent }}&details_id={{ .onDetailsValue.Id }}"> {{ .onDetailsValue.Text }} </a>
+                                    {{ end }}
                                 </div>
-                            {{end}}
-                            <article class="article-body  {{if eq "markdown" "markdown"}}markdown-body editormd-preview-container{{else}}editor-content{{end}}"  id="page-content">
-                                true
-                            </article>
-                            {{if true}}
-                                <div class="ap ap-content-bottom mgt-15px">
-                                    测试
+                                <div class="col-xs-12 hung-next" style="padding-left: 0; padding-right: 0;">
+                                    {{ if ne .underDetailsValue.Id 0 }}
+                                    <span class="text-muted">下一篇:</span><a href="/blog/series_details?series_id={{ .seriesDetailsValue.Parent }}&details_id={{ .underDetailsValue.Id }}"> {{ .underDetailsValue.Text }} </a>
+                                    {{ end }}
                                 </div>
-                            {{end}}
-                            <div class="row hung-read-link">
-                                <div class="col-xs-12 hung-pre" style="display: none">
-                                    <span class="text-muted">上一篇:</span><a href="#"></a>
-                                </div>
-                                <div class="col-xs-12 hung-next" style="display: none">
-                                    <span class="text-muted">下一篇:</span><a href="#"></a>
-                                </div>
+                            </div>
+
+                            <div class="card comment">
+                                <span id="am_comment" class="target-fix">暗锚,解决锚点偏移</span>
+                                <form class="layui-form blog-editor" lay-filter="formComment">
+                                    <div class="layui-form-item">
+                                        <textarea style="resize: none;" name="content" placeholder="请输入评论内容" class="layui-textarea blog-aricle-comment"></textarea>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <button type="button" class="layui-btn" onclick="aricleComment({{ .seriesDetailsValue.Id }})" lay-submit lay-filter="formComment">提交评论</button>
+                                    </div>
+                                </form>
+                                <!-- 评论列表 -->
+                                <ul class="blog-comment">
+                                    {{ range .comment }}
+                                        {{ $CommentId := .Id }}
+                                        <li>
+                                            <div class="comment-parent">
+                                                <a><img src="{{ .Avatar }}" alt="" /></a>
+                                                <div class="info">
+                                                    <span class="username"><a>{{ .Nickname }}</a></span>
+                                                    {{ if ne .UserTitle "" }}
+                                                    <span class="layui-badge layui-bg-orange">
+                                                        {{ .UserTitle }}
+                                                    </span>
+                                                    {{ end }}
+                                                </div>
+                                                <div class="content comment-text">
+                                                    {{ .Content }}
+                                                </div>
+                                                <p class="info info-footer">
+								<span class="aux-word">
+									<i class="layui-icon layui-icon-log"></i>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}
+								</span>
+                                                    <span class="aux-word">
+									<i class="layui-icon layui-extend-liulanqi"></i>{{ .Browser }}
+								</span>
+                                                    <a class="btn-reply" href="javascript:;">回复</a>
+                                                </p>
+                                                <div class="replycontainer layui-hide">
+                                                    <form class="layui-form blog-editor" lay-filter="formReply">
+                                                        <textarea style="resize: none;" name="content" placeholder="请输入评论内容" id="comment-{{ .Id }}" class="layui-textarea"></textarea>
+                                                        <button type="button" class="layui-btn layui-btn-sm" onclick="addReply({{ .Id }}, {{ $CommentId }}, {{ .UserId }}, 'comment')" lay-submit lay-filter="formReply">提交</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            {{ range .ReplyList }}
+                                                <div class="comment-child">
+                                                    <a><img src="{{ .SAvatar }}" alt="" /></a>
+                                                    <div class="info">
+                                                        <span class="username"><a>{{ .SNickname }}</a></span>
+                                                        {{ if ne .SUserTitle "" }}
+                                                            <span class="layui-badge layui-bg-orange">
+										{{ .SUserTitle }}
+									</span>
+                                                        {{ end }}
+                                                        <span>回复<a class="to-username">@{{ .DNickname }}</a>：</span>
+                                                        {{ if ne .DUserTitle "" }}
+                                                            <span class="layui-badge layui-bg-orange">
+										{{ .DUserTitle }}
+									</span>
+                                                        {{ end }}
+                                                        <span class="comment-text">{{ .Content }}</span>
+                                                    </div>
+                                                    <p class="info">
+								<span class="aux-word">
+									<i class="layui-icon layui-icon-log"></i>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}
+								</span>
+                                                        <span class="aux-word">
+									<i class="layui-icon layui-extend-liulanqi"></i>{{ .Browser }}
+								</span>
+                                                        <a class="btn-reply" href="javascript:;">回复</a>
+                                                    </p>
+                                                    <div class="replycontainer layui-hide">
+                                                        <form class="layui-form blog-editor" lay-filter="formReply">
+                                                            <textarea id="reply-{{ .Id }}" style="resize: none;" name="content" placeholder="请输入评论内容" class="layui-textarea"></textarea>
+                                                            <button type="button" onclick="addReply({{ .Id }}, {{ $CommentId }}, {{ .SUserId }}, 'reply')" class="layui-btn layui-btn-sm" lay-submit lay-filter="formReply">提交</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                                {{/*<div id="page"></div>*/}}
                             </div>
 
                             {{/*<div class="jump-top">*/}}
@@ -196,7 +270,7 @@
                                         <a href="javascript:void(0);" title="菜单"><i class="fa fa-align-justify"></i></a>
                                     </li>
                                     <li class="visible-xs visible-sm bars-menu-toggle">
-                                        <a href="#" title="更多功能"><i class="fa fa-plus-circle"></i><i class="fa fa-minus-circle hide"></i></a>
+                                        <a title="更多功能"><i class="fa fa-plus-circle"></i><i class="fa fa-minus-circle hide"></i></a>
                                     </li>
                                     <li>
                                         <a href="javascript:;" class="view-backtop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
@@ -210,24 +284,20 @@
                 </div>
 
                 <div class="manual-left">
-                    <div class="article-search" data-bookid="{{$BookId}}">
-                        <form id="searchForm" action="/read/{{$Identify}}/search" method="post">
-                            <div class="input-group">
-                                <input type="text" name="keyword" placeholder="Search..." autocomplete="off" class="form-control">
-                                <span class="input-group-addon input-group-addon-clear"><i class="fa fa-remove"></i></span>
-                                <span class="input-group-addon">
+                    <div class="article-search">
+                        <div class="input-group">
+                            <input type="text" id="searchInputValue" name="keyword" placeholder="Search..." autocomplete="off" class="form-control">
+                            <span class="input-group-addon" onclick="searchTitleValue()">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </span>
-                            </div>
-                        </form>
+                        </div>
                         <div class="pull-right hidden-xs">
                             <i class="fa fa-align-justify"></i>
                         </div>
                     </div>
                     <div class="article-menu">
                         <div class="article-menu-detail">
-                            <!-- result -->
-                            <ul><li><a href='http://baidu.com' title='关于'>关于</a></li><li><a href='http://baidu.com' title='基础入门'>基础入门</a></li><li><a href='http://baidu.com' title='字符串'>字符串</a><ul><li><a href='http://baidu.com' title='字符串及操作'>字符串及操作</a></li><li><a href='http://baidu.com' title='字符串与bytes'>字符串与bytes</a></li><li><a href='http://baidu.com' title='字符串格式化'>字符串格式化</a></li></ul></li><li><a href='http://baidu.com' title='线性结构'>线性结构</a><ul><li><a href='http://baidu.com' title='多版本环境管理'>多版本环境管理</a></li><li><a href='http://baidu.com' title='线性结构介绍与切片'>线性结构介绍与切片</a></li><li><a href='http://baidu.com' title='线性结构的解构与封装'>线性结构的解构与封装</a></li></ul></li><li><a href='http://baidu.com' title='集合及操作'>集合及操作</a></li></ul>
+                            {{ .titleTree }}
                         </div>
                         <div class="search-result">
                             <div class="search-empty" style="display: block;">
@@ -261,11 +331,8 @@
         </div>
     </div>
 </div>
-<script>
-    function iniParam() {
-        console.log("惊不惊喜，意不意外，被你发现我了啊")
-    }
-</script>
+
+<script src="/static/js/seriesDetails.js"></script>
 <!-- 打字机特效js-->
 <script src="../static/js/typewriter-special-effects.js"></script>
 <script src="../static/js/Template.js"></script>
@@ -287,7 +354,6 @@
     <script type="text/javascript" src="/static/tree/katex/katex.min.js"></script>
     <script type="text/javascript" src="/static/tree/js/bookstack.js"></script>
     <script type="text/javascript" src="/static/tree/js/main.js"></script>
-
     <script type="text/javascript">
         'use strict';
         $(function () {
@@ -300,14 +366,6 @@
                 }
             }
 
-            $("#searchList").on("click","a",function () {
-                var id = $(this).attr("data-id");
-                var url = id;
-                var _this=$(this);
-                _this.parent("li").siblings().find("a").removeClass("active");
-                _this.addClass("active");
-                load_doc(url,_this.attr("data-wd"));
-            });
             //以https或者http开头的url链接，加上target='_blank'
             $(".markdown-body").on("click","a",function (e) {
                 e.preventDefault();
@@ -353,6 +411,29 @@
             });
         });
     </script>
+
+{{/* start md文件 */}}
+    <script src="/static/editormd/lib/marked.min.js"></script>
+    <script src="/static/editormd/lib/prettify.min.js"></script>
+    <script src="/static/editormd/lib/raphael.min.js"></script>
+    <script src="/static/editormd/lib/underscore.min.js"></script>
+    <script src="/static/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="/static/editormd/lib/flowchart.min.js"></script>
+    <script src="/static/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="/static/editormd/editormd.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            testEditormdView2 = editormd.markdownToHTML("details-content", {
+                htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                emoji           : true,
+                taskList        : true,
+                // tex             : true,  // 默认不解析
+                flowChart       : true,  // 默认不解析
+                sequenceDiagram : true,  // 默认不解析
+            });
+        })
+    </script>
+{{/* start md文件 */}}
 </body>
 <!-- InstanceEnd -->
 </html>

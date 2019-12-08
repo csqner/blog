@@ -22,6 +22,7 @@ func AutoMigrateTable() {
 		&blog.SeriesDetails{},
 		&blog.Comment{},
 		&blog.Reply{},
+		&blog.Philosophy{},
 
 		// user
 		&user.User{},

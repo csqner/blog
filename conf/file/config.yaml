@@ -4,7 +4,7 @@ db:
   username: root
   password: 123456
   gorm:
-    logMode: 0
+    logMode: 1
     maxOpenConn: 20000
     maxIdleConn: 0
     singularTable: 1
@@ -16,12 +16,9 @@ log:
   localtime: 1
   compress: 1
   path: /Users/lanyulei/projects/lanyulei/go_projects/blog/log/blog.log
-api:
-  version: /api/v1
 jwt:
   secret: 48c3564674c011e98849acde48001122
-initPassword: 123456
 qq:
-  appId: 101827468
-  appKey: 0d2d856e48e0ebf6b98e0d0c879fe74d
-  redirectURI: http://127.0.0.1:9090/qqLogin
+  appId: 101831735
+  appKey: fde6f231b8f22f476100fc38dc6b86a1
+  redirectURI: http://www.fdevops.com/login/callback

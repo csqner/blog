@@ -23,7 +23,7 @@
 	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
 	<meta property="og:site_name" content="www.fdevops.com" />
 	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
 	<link href="../static/css/loading.css" rel="stylesheet" />
 	<link href="../static/css/scroll-bar.css" rel="stylesheet" />
 	<link href="../static/Eextend/layui/css/layui.css" rel="stylesheet" media="all" />
@@ -103,7 +103,7 @@
         <div class="layui-row text py-5">
             <p class="lead">Keep on going never give up.</p>
             <h1>
-                我为你翻山越岭，却无心看风景
+                {{ .philosophyValue.Content }}
             </h1>
             <a href="#welcome" class="layui-btn layui-btn-normal layui-btn-radius layui-btn-lg">Let's Go</a>
         </div>
@@ -171,7 +171,7 @@
 								{{ .Content }}
 							</p>
 							<div class="user">
-								<a href="#" target="_blank" rel="nofollow">
+								<a target="_blank" rel="nofollow">
 									<div>
 										<img class="layui-circle" src="{{ .Avatar }}" alt="">
 										<h5 class="layui-elip">{{ .Nickname }}</h5>
@@ -196,7 +196,7 @@
 						<svg class="icon" aria-hidden="true">
 							<use xlink:href="#layui-extend-jiangbei-{{ .Order }}"></use>
 						</svg>
-						<a href="#" target="_blank" rel="nofollow">
+						<a target="_blank" rel="nofollow">
 							<img class="layui-circle" src="{{ .Avatar }}" alt="">
 							<h4 class="layui-elip">{{ .Nickname }}</h4>
 						</a>
@@ -217,7 +217,7 @@
 				<div class="swiper-wrapper">
 					{{ range .userInfoList }}
 					<div class="swiper-slide">
-						<a href="#" target="_blank" rel="nofollow">
+						<a target="_blank" rel="nofollow">
 							<img class="layui-circle" src="{{ .Avatar }}" alt="">
 							<h4 class="layui-elip">{{ .Nickname }}</h4>
 						</a>

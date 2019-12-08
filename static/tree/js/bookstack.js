@@ -27,55 +27,6 @@ function show_copy_btn() {
     }
 }
 
-function load_doc(url,wd,without_history) {
-    NProgress.start();
-    $.get(url+"?fr=bookstack",function (res) {
-        if(res.errcode === 0){
-            var body = res.data.body;
-            var doc_title = res.data.doc_title;
-            var title = res.data.title;
-            var $body = body;
-            $("#page-content").html($body);
-            // RenderByMarkdown($body);
-            $("title").text(title);
-            $("#article-title").text(doc_title);
-
-            $(".bookmark-action").attr("data-docid",res.data.doc_id);
-            $(".btn-edit").attr("href",$(".btn-edit").attr("data-url")+res.data.doc_id);
-            if (res.data.bookmark){//已添加书签
-                $(".bookmark-action .bookmark-add").addClass("hide");
-                $(".bookmark-action .bookmark-remove").removeClass("hide");
-            }else{//未添加书签
-                $(".bookmark-action .bookmark-add").removeClass("hide");
-                $(".bookmark-action .bookmark-remove").addClass("hide");
-            }
-            if (!without_history){
-                change_url_state(url,title);
-            }
-            active_readed_menu(url);
-            NProgress.done();
-            pre_and_next_link();
-            if(wd) {
-                var wds = wd.split(","),l=wds.length;
-                for (var i = 0; i < l; i++) {
-                    $(".markdown-body").highlight(wds[i].trim());
-                }
-            }
-            $('.m-manual .manual-right').animate({scrollTop:0}, 100);
-            $("#qrcode").html("");
-            $("#qrcode").qrcode(location.href);
-            $(".read-count").text(res.data.view);
-            $(".updated-at").text(res.data.updated_at);
-        }else{
-            // location.href=$url;
-            //可能是存在缓存导致的加载失败，如果加载失败，直接刷新需要打开的链接【注意layer.js的引入】
-            layer.msg("加载失败");
-            NProgress.done();
-        }
-        show_copy_btn();
-    })
-}
-
 function initHighlighting() {
     $('pre code').each(function (i, block) {
         hljs.highlightBlock(block);
@@ -281,16 +232,6 @@ $(function () {
                 alertTips("danger",res.message,3000,"");
             }
         })
-    });
-
-    pre_and_next_link();
-    $(".article-menu-detail a").click(function (e) {
-        e.preventDefault();
-        load_doc($(this).attr("href"),"");
-    });
-    $(".hung-read-link").on("click","a",function (e) {
-        e.preventDefault();
-        load_doc($(this).attr("href"),"");
     });
 
     //重置阅读记录

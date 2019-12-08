@@ -101,10 +101,7 @@
 }
 
 .details-content {
-    border: 1px solid red;
-    height: 55px;
-    line-height: 55px;
-    padding: 0 15px;
+    padding: 0;
 }
 
 .details-content-title {

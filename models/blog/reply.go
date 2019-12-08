@@ -21,3 +21,15 @@ type Reply struct {
 func (Reply) TableName() string {
 	return "blog_reply"
 }
+
+type ReplyStruct struct {
+	Reply
+	SUserId    int    `json:"s_user_id"`
+	SNickname  string `json:"s_nickname"`
+	SUserTitle string `json:"s_user_title"`
+	SAvatar    string `json:"s_avatar"`
+	NUserId    int    `json:"n_user_id"`
+	DNickname  string `json:"d_nickname"`
+	DUserTitle string `json:"d_user_title"`
+	DAvatar    string `json:"d_avatar"`
+}

@@ -9,6 +9,7 @@ import (
 	. "blog/pkg/response"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"strings"
@@ -78,11 +79,24 @@ func IndexHandler(c *gin.Context) {
 		return
 	}
 
+	// 获取哲理句子
+	philosophyId := rand.Intn(145)
+	if philosophyId == 0 {
+		philosophyId += 1
+	}
+	var philosophyValue blog.Philosophy
+	err = connection.DB.Self.Model(&philosophyValue).Where("id = ?", int(philosophyId)).Find(&philosophyValue).Error
+	if err != nil {
+		HtmlResponse(c, "error.html", err.Error(), "/blog/index")
+		return
+	}
+
 	c.HTML(http.StatusOK, "Index.html", gin.H{
-		"contentList":  contentValueList,
-		"commentList":  commentList,
-		"commentUser":  commentUser,
-		"userInfoList": userInfoList,
+		"contentList":     contentValueList,
+		"commentList":     commentList,
+		"commentUser":     commentUser,
+		"userInfoList":    userInfoList,
+		"philosophyValue": philosophyValue,
 	})
 }
 
@@ -280,18 +294,6 @@ func ContentDetailsHandler(c *gin.Context) {
 		return
 	}
 
-	type replyStruct struct {
-		blog.Reply
-		SUserId    int    `json:"s_user_id"`
-		SNickname  string `json:"s_nickname"`
-		SUserTitle string `json:"s_user_title"`
-		SAvatar    string `json:"s_avatar"`
-		NUserId    int    `json:"n_user_id"`
-		DNickname  string `json:"d_nickname"`
-		DUserTitle string `json:"d_user_title"`
-		DAvatar    string `json:"d_avatar"`
-	}
-
 	var contentTmp blog.Content
 	err := connection.DB.Self.Model(&contentTmp).Where("id = ?", contentId).Find(&contentTmp).Error
 	if err != nil {
@@ -325,7 +327,7 @@ func ContentDetailsHandler(c *gin.Context) {
 
 	// 获取用户评论数
 	var aricleCommentIdList []int
-	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ?", contentId).Pluck("id", &aricleCommentIdList).Error
+	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ? and type = 1", contentId).Pluck("id", &aricleCommentIdList).Error
 	if err != nil {
 		Response(c, errno.ErrSelectComment, nil, err.Error())
 		return
@@ -341,18 +343,12 @@ func ContentDetailsHandler(c *gin.Context) {
 
 	content.CommentCount += articleReplyCount
 
-	type commentStruct struct {
-		blog.Comment
-		Nickname  string        `json:"nickname"`
-		UserTitle string        `json:"user_title"`
-		Avatar    string        `json:"avatar"`
-		ReplyList []replyStruct `json:"reply_list"`
-	}
-	var commentList []commentStruct
+	// 获取所有评论
+	var commentList []blog.CommentStruct
 	err = connection.DB.Self.Table("blog_comment").
 		Joins("left join blog_user on blog_comment.user_id = blog_user.id").
 		Select("blog_comment.*, blog_user.nickname, blog_user.avatar, blog_user.title as user_title").
-		Where("blog_comment.deleted_at is null and blog_comment.article_id = ?", contentId).
+		Where("blog_comment.deleted_at is null and blog_comment.article_id = ? and type = 1", contentId).
 		Order("created_at desc").
 		Scan(&commentList).Error
 	if err != nil {
@@ -361,7 +357,7 @@ func ContentDetailsHandler(c *gin.Context) {
 	}
 
 	var commentIdList []int
-	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ?", contentId).
+	err = connection.DB.Self.Model(&blog.Comment{}).Where("article_id = ? and type = 1", contentId).
 		Pluck("id", &commentIdList).Error
 	if err != nil {
 		HtmlResponse(c, "error.html", fmt.Sprintf("获取评论错误，%v", err.Error()), "/blog/list")
@@ -369,7 +365,7 @@ func ContentDetailsHandler(c *gin.Context) {
 	}
 
 	// 获取当前文章的所有回复
-	var replyList []replyStruct
+	var replyList []blog.ReplyStruct
 	err = connection.DB.Self.Table("blog_reply").
 		Joins("left join blog_user as s_blog_user on s_blog_user.id = blog_reply.source_user_id").
 		Joins("left join blog_user as d_blog_user on d_blog_user.id = blog_reply.aims_user_id").

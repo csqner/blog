@@ -28,14 +28,32 @@ func SuperSeriesTree(allSeries []blog.SeriesDetailsStruct, pid int) []blog.Tree 
 	return treeArray
 }
 
-func GetDocumentTree(array []blog.Tree, buf *bytes.Buffer) {
+func GetDocumentTree(array []blog.Tree, buf *bytes.Buffer, args ...interface{}) {
+	detailsId := args[0].(int)
+	detailsMap := args[1].(map[string]blog.Tree)
+
 	buf.WriteString("<ul>")
 
-	for _, item := range array {
+	for index, item := range array {
+		if detailsId != 0 && detailsId == item.Id {
+			// 获取上一篇文章ID
+			if index != 0 {
+				detailsMap["onContent"] = array[index-1]
+			}
+			if index+1 < len(array) {
+				detailsMap["underContent"] = array[index+1]
+			}
+		}
+
 		buf.WriteString("<li>")
-		buf.WriteString(fmt.Sprintf("<a href='http://baidu.com' title='%s'>%s</a>", item.Text, item.Text))
+		if detailsId == item.Id {
+			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=9&details_id=%v' style='color: #1E9FFF' title='%s'>%s</a>", item.Id, item.Text, item.Text))
+		} else {
+			buf.WriteString(fmt.Sprintf("<a href='/blog/series_details?series_id=9&details_id=%v' title='%s'>%s</a>", item.Id, item.Text, item.Text))
+		}
+
 		if len(item.Nodes) > 0 {
-			GetDocumentTree(item.Nodes, buf)
+			GetDocumentTree(item.Nodes, buf, args...)
 		}
 		buf.WriteString("</li>")
 	}
