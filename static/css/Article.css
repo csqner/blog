@@ -84,7 +84,7 @@
     margin-right: 3px;
     color: #838383;
     font-size: 12.5px;
-}    
+}
 .post-area .single-post .inner-post .post-info .blog-meta ul li .layui-icon-note {
     transform: rotateY(90deg);
     -ms-transform: rotate(90deg);
@@ -98,8 +98,8 @@
     font-size: 12.5px;
 }
 .post-area .single-post .inner-post .post-info .blog-meta ul li a:hover {
-    text-decoration:underline;         
-}  
+    text-decoration:underline;
+}
 .post-area .single-post .inner-post .post-info .blog-meta ul li i {
     font-size: 13.5px;
     margin-right: 3px;
@@ -168,7 +168,7 @@
     background: #ff7008;
 }
 .post-area .single-post .post-date.five span {
-    background: #23bdb6;       
+    background: #23bdb6;
 }
 .post-area .single-post:hover .post-date.two span {
     background: #e44a4b;
@@ -180,7 +180,7 @@
     background: #ffab08;
 }
 .post-area .single-post:hover .post-date.five span {
-    background: #15a59e;       
+    background: #15a59e;
 }
 
 /* 分页样式 */
@@ -254,7 +254,7 @@
 .search i:hover {
     cursor: pointer;
     color: #999;
-    font-size: 27px;       
+    font-size: 27px;
 }
 .search-border {
     border: 2px solid #659FFD;
@@ -272,7 +272,7 @@
 }
 .serach-tip p {
     font-size: 18px;
-    line-height: 50px; 
+    line-height: 50px;
     background-color:#fff;
 }
 .serach-tip p span {
@@ -359,13 +359,13 @@
 .suiji ul {
     overflow: hidden;
     display: block;
-    list-style-type: disc; 
+    list-style-type: disc;
 }
 .suiji li {
     line-height: 22px;
     margin-bottom: 10px;
     position: relative;
-    padding-left: 12px;  
+    padding-left: 12px;
 }
 .suiji li:before {
     position: absolute;
