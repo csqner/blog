@@ -20,7 +20,7 @@
 	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
 	<meta property="og:url" content="http://www.fdevops.com" />
-	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
+	<meta property="og:image" content="http://www.fdevops.com/static/images/logo.png" />
 	<meta property="og:site_name" content="www.fdevops.com" />
 	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
@@ -112,7 +112,7 @@
 		<!-- TemplateBeginEditable name="EditRegion1" -->EditRegion1<!-- TemplateEndEditable -->    
     </section>
    <footer>
-     <p><a href="http://www.qbl.link">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
+     <p><a href="http://www.fdevops.com">Copyright &copy; 2019. Q-Blog All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">

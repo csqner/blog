@@ -20,7 +20,7 @@
 	<meta property="og:title" content="Mr. Lan 网站首页" />
 	<meta property="og:type" content="个人博客" />
 	<meta property="og:url" content="http://www.fdevops.com" />
-	<meta property="og:image" content="http://www.qbl.link/Content/Web/images/logo.png" />
+	<meta property="og:image" content="http://www.fdevops.com/static/images/logo.png" />
 	<meta property="og:site_name" content="www.fdevops.com" />
 	<meta property="og:description" content="Mr. Lan，一个Golang/Python程序员的个人博客，记录博主学习和成长之路，分享Python/Golang方面技术和源码。" />
 	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
@@ -139,11 +139,11 @@
 						{{ end }}
 					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12" style="padding-top: {{ $top }}">
 						<article class="card">
-							<a href="http://www.qbl.link/Web/Home/ArticleDetails/66b3cd59-3246-411d-b155-139726779477.html">
-								<img class="card-img-top" src="../static/images/img04.jpg" alt=""></a>
+							<a href="/blog/details?content_id={{ $value.Id }}">
+								<img class="card-img-top" src="{{ $value.Image }}" alt=""></a>
 							<div class="card-body">
 								<div class="card-subtitle mb-2 text-muted">作者：Mr. Lan &nbsp;&nbsp;&nbsp;&nbsp;{{ $value.CreatedAt.Format "2006-01-02" }}</div>
-								<h4 class="card-title"><a href="http://www.qbl.link/Web/Home/ArticleDetails/66b3cd59-3246-411d-b155-139726779477.html">{{ $value.Title }}</a></h4>
+								<h4 class="card-title"><a href="/blog/details?content_id={{ $value.Id }}">{{ $value.Title }}</a></h4>
 								<div class="card-text card-text-introduction" style="height: 78px">
 									{{ $value.Introduction }}
 								</div>
