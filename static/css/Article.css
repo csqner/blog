@@ -63,11 +63,16 @@
     line-height: 26px;
     margin-bottom: 25px;
     margin: 0 0 26px;
-    display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .post-area .single-post .inner-post .post-info .blog-meta {
     overflow: hidden;
