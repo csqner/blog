@@ -15,9 +15,9 @@ type Content struct {
 	Introduction string `grom:"column:introduction;type:varchar(1024)" json:"introduction" form:"introduction"`
 	Type         int    `gorm:"column:type_id;type:int(11)" json:"type_id" form:"type_id"`
 	Content      string `gorm:"column:content;type:longtext" json:"content" form:"content"`
-	Awesome      int    `gorm:"column:awesome;int(11)" json:"awesome" form:"awesome"`  //  赞
-	View         int    `gorm:"column:view;int(11);default:0" json:"view" form:"view"` // 访问量
-	Image        string `gorm:"column:image;varchar(1024);" json:"image" form:"image"` // 文章图片
+	Awesome      int    `gorm:"column:awesome;type:int(11);default:0" json:"awesome" form:"awesome"` //  赞
+	View         int    `gorm:"column:view;type:int(11);default:0" json:"view" form:"view"`          // 访问量
+	Image        string `gorm:"column:image;type:varchar(1024);" json:"image" form:"image"`          // 文章图片
 }
 
 func (Content) TableName() string {
