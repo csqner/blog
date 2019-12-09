@@ -110,13 +110,13 @@
 					{{ range $index, $value := .content}}
 					<div class="single-post">
 						<div class="inner-post">
-							<div class="post-img">
+							<div class="post-img" style="height: 175px; border: 1px solid red">
 								<a href="/blog/details?content_id={{ $value.Id }}">
 									<img src="{{ $value.Image }}" alt="">
 								</a>
 							</div>
 							<div class="post-info">
-								<div class="post-title" style="width: 565px; min-height: 26px">
+								<div class="post-title" style="width: 565px; height: 38px">
 									<h3>
 										<a href="/blog/details?content_id={{ $value.Id }}">{{ $value.Title }}</a>
 									</h3>
@@ -209,8 +209,8 @@
 
 		<!-- InstanceEndEditable -->
     </section>
-   <footer>
-     <p><a href="http://www.fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
+    <footer>
+      <p><a href="http://www.fdevops.com">Copyright &copy; 2019. Mr. Lan All rights reserved.</a></p>
     </footer>
     <div id="suspension">
         <div class="livechat-girl animated">
@@ -229,6 +229,15 @@
 <script src="../static/js/typewriter-special-effects.js"></script>
 <script src="../static/js/Template.js"></script>
 <!-- 这个JS展示公告层用的，无关紧要可以删掉 -->
-
 </body>
-<!-- InstanceEnd --></html>
+<style>
+	.post-title {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	}
+</style>
+<!-- InstanceEnd -->
+</html>
