@@ -141,7 +141,8 @@
 					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12" style="padding-top: {{ $top }}">
 						<article class="card">
 							<a href="/blog/details?content_id={{ $value.Id }}">
-								<img class="card-img-top" src="{{ $value.Image }}" alt=""></a>
+
+								<img style="width: 335px; height: 185px" class="card-img-top" src="{{ $value.Image }}" alt=""></a>
 							<div class="card-body">
 								<div class="card-subtitle mb-2 text-muted">作者：Mr. Lan &nbsp;&nbsp;&nbsp;&nbsp;{{ $value.CreatedAt.Format "2006-01-02" }}</div>
 								<h4 class="card-title"><a href="/blog/details?content_id={{ $value.Id }}">{{ $value.Title }}</a></h4>
