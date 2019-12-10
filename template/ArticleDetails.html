@@ -39,6 +39,11 @@
 	<script src="../static/js/jquery.min.js"></script>
 	<script src="../static/Eextend/layui/layui.js"></script>
 	<script src="/static/js/baiduStatistics.js"></script>
+
+	{{/* 分享功能插件 */}}
+	<link href="/static/share/share.min.css" rel="stylesheet">
+	<script src="/static/share/jquery.share.min.js"></script>
+
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -141,6 +146,13 @@
 						<p>若喜欢，就赞一下吧，你的鼓励是我最大的动力</p>
 						<button id="btnLike" onclick="addAwesome({{ .content.Id }})" type="button" class="layui-btn">LIKE&nbsp;|&nbsp; <span class="like_count_text">{{ .content.Awesome }}</span>
 						</button>
+
+						<ol style="margin-top: 15px">
+							<li class="row">
+								<div class="social-share"></div>
+							</li>
+						</ol>
+
 					</div>
 					<hr>
 					<h3 class="h3_class">温馨提示：本站所有文章，若非特别声明，均为原创，转载请注明作者及原文链接。</h3>
