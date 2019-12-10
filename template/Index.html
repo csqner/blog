@@ -141,11 +141,14 @@
 					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12" style="padding-top: {{ $top }}">
 						<article class="card">
 							<a href="/blog/details?content_id={{ $value.Id }}">
-
 								<img style="width: 335px; height: 185px" class="card-img-top" src="{{ $value.Image }}" alt=""></a>
 							<div class="card-body">
 								<div class="card-subtitle mb-2 text-muted">作者：Mr. Lan &nbsp;&nbsp;&nbsp;&nbsp;{{ $value.CreatedAt.Format "2006-01-02" }}</div>
-								<h4 class="card-title"><a href="/blog/details?content_id={{ $value.Id }}">{{ $value.Title }}</a></h4>
+								<h4 class="card-title">
+									<div class="index-title-div">
+										<a href="/blog/details?content_id={{ $value.Id }}">{{ $value.Title }}</a>
+									</div>
+								</h4>
 								<div class="card-text card-text-introduction" style="height: 78px">
 									{{ $value.Introduction }}
 								</div>
@@ -260,6 +263,15 @@
     <!-- 打字机特效js-->
 <script src="../static/js/typewriter-special-effects.js"></script>
 <script src="../static/js/Template.js"></script>
-
+<style>
+	.index-title-div {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	}
+</style>
 </body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
