@@ -648,3 +648,7 @@ func AddAwesomeHandler(c *gin.Context) {
 
 	Response(c, nil, nil, "")
 }
+
+func SiteMapHandler(c *gin.Context) {
+	c.HTML(http.StatusOK, "siteMap.html", gin.H{})
+}

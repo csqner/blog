@@ -29,5 +29,6 @@ func BlogRouter(g *gin.Engine) {
 		blogs.POST("/save-reply", middleware.AuthSessionMiddle(), blog.SaveReplyHandler)
 		blogs.GET("/add-awesome", blog.AddAwesomeHandler)
 		blogs.GET("/leave", blog.LeaveHandler)
+		blogs.GET("/site", blog.SiteMapHandler)
 	}
 }
