@@ -42,6 +42,7 @@ func IndexHandler(c *gin.Context) {
 		Joins("left join blog_user on blog_comment.user_id = blog_user.id").
 		Select("blog_comment.*, blog_user.nickname, blog_user.avatar").
 		Limit(6).
+		Order("id desc").
 		Scan(&commentList).Error
 	if err != nil {
 		HtmlResponse(c, "error.html", err.Error(), "/blog/index")
